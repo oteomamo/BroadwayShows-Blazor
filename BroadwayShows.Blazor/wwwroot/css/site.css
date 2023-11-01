@@ -1,0 +1,65 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-right: 15px;
+    height: 75px;
+    padding-top: 1rem;
+    align-items: center; 
+}
+
+
+
+.show-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* This will create a 3-column layout */
+    gap: 16px; /* Space between each card */
+}
+
+.show-container {
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-card {
+    margin: 15px; /* Add spacing between each show */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center items in the show card */
+    text-align: center;
+}
+
+    .show-card img {
+        width: 200px;
+        height: 300px;
+        object-fit: cover;
+    }
+
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.search-button {
+    background-color: black;
+    color: white;
+}
+
+

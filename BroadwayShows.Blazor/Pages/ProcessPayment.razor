@@ -1,0 +1,22 @@
+﻿@page "/ProcessPayment"
+@inject TicketDataService TicketDataService
+
+
+@code {
+    private TicketPurchaseData ticketData;
+
+    protected override void OnInitialized()
+    {
+        ticketData = TicketDataService.CurrentPurchaseData;
+    }
+}
+
+<!-- Display the ticket data -->
+<div class="container mt-5">
+    <h3>Processing Payment for:</h3>
+    <p>Show Name: @ticketData.ShowName</p>
+    <p>Theater Name: @ticketData.TheaterName</p>
+    <p>Date: @ticketData.PurchaseDate.ToString("MM/dd/yyyy")</p>
+    <p>Time: @ticketData.Time</p>
+    <p>Number of Tickets: @ticketData.NumberOfTickets</p>
+</div>

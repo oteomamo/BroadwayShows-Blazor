@@ -1,0 +1,34 @@
+﻿@page "/"
+@using BroadwayShows.Library.Services
+@inject ShowsService ShowsService
+
+<div class="search-container">
+    <NavLink href="/search" class="btn btn-primary search-button">Find a Show</NavLink>
+</div>
+
+
+@if (shows == null)
+{
+    <p>Loading show names...</p>
+}
+else
+{
+    <div class="show-container">
+        @foreach (var show in shows)
+        {
+            <div class="show-card">
+                <img src="/css/Images/@show.Image" alt="@show.Name" />
+                <p>@show.Name</p>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<(string Name, string Image)> shows;
+
+    protected override async Task OnInitializedAsync()
+    {
+        shows = await ShowsService.GetShowNamesAndImagesAsync();
+    }
+}

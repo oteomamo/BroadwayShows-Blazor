@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BroadwayShows.Library.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,8 @@ namespace BroadwayShows.Library.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ReleaseDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Genre = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Image = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -42,8 +44,6 @@ namespace BroadwayShows.Library.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Address = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AddressDetail = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NumberOfSeats = table.Column<int>(type: "int", nullable: false)
                 },
@@ -66,15 +66,14 @@ namespace BroadwayShows.Library.Migrations
                     Gender = table.Column<string>(type: "varchar(1)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ShowId = table.Column<int>(type: "int", nullable: false),
-                    TheaterId = table.Column<int>(type: "int", nullable: false),
-                    ShowsShowId = table.Column<int>(type: "int", nullable: false)
+                    TheaterId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CastCrews", x => x.SSN);
                     table.ForeignKey(
-                        name: "FK_CastCrews_Shows_ShowsShowId",
-                        column: x => x.ShowsShowId,
+                        name: "FK_CastCrews_Shows_ShowId",
+                        column: x => x.ShowId,
                         principalTable: "Shows",
                         principalColumn: "ShowId",
                         onDelete: ReferentialAction.Cascade);
@@ -112,9 +111,9 @@ namespace BroadwayShows.Library.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CastCrews_ShowsShowId",
+                name: "IX_CastCrews_ShowId",
                 table: "CastCrews",
-                column: "ShowsShowId");
+                column: "ShowId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CastCrews_TheaterId",

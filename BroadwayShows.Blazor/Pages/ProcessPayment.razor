@@ -1,22 +1,112 @@
 ﻿@page "/ProcessPayment"
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
 @inject TicketDataService TicketDataService
+@inject TheaterService TheaterService
+@inject TicketSalesService TicketSalesService
+@inject NavigationManager NavManager
 
 
 @code {
     private TicketPurchaseData ticketData;
+    private int? theaterId;
+    private TicketSales ticketInfo;
+    private bool purchaseSuccessful = false; 
 
-    protected override void OnInitialized()
+
+    protected override async Task OnInitializedAsync()
     {
         ticketData = TicketDataService.CurrentPurchaseData;
+
+        if (ticketData == null)
+        {
+            return;
+        }
+        await LoadTicketInfo();
+    }
+
+    private async Task LoadTicketInfo()
+    {
+        if (ticketData == null)
+        {
+            return;
+        }
+
+        theaterId = await TheaterService.GetTheaterIdByName(ticketData.TheaterName);
+
+        if (!theaterId.HasValue)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(ticketData.Time))
+        {
+            return;
+        }
+
+        TimeSpan timeSpan;
+        bool isTimeValid = TimeSpan.TryParse(ticketData.Time, out timeSpan);
+
+        if (!isTimeValid)
+        {
+            return;
+        }
+
+        ticketInfo = await TicketSalesService.GetTicketSalesForShowAsync(theaterId.Value, ticketData.PurchaseDate, timeSpan);
+
+        if (ticketInfo == null)
+        {
+        }
+    }
+    private async Task RemoveTickets()
+    {
+        if (ticketInfo != null)
+        {
+            await TicketSalesService.RemoveTicketsAsync(ticketInfo.TicketNumber, ticketData.NumberOfTickets);
+            await LoadTicketInfo();
+            purchaseSuccessful = true; 
+
+            var timer = new System.Timers.Timer(3000);
+            timer.Elapsed += OnTimedEvent;
+            timer.AutoReset = false;
+            timer.Start();
+        }
+    }
+    private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+    {
+        NavManager.NavigateTo("/"); 
     }
 }
 
-<!-- Display the ticket data -->
-<div class="container mt-5">
-    <h3>Processing Payment for:</h3>
-    <p>Show Name: @ticketData.ShowName</p>
-    <p>Theater Name: @ticketData.TheaterName</p>
-    <p>Date: @ticketData.PurchaseDate.ToString("MM/dd/yyyy")</p>
-    <p>Time: @ticketData.Time</p>
-    <p>Number of Tickets: @ticketData.NumberOfTickets</p>
-</div>
+}
+
+@if (ticketData != null)
+{
+    <div class="container mt-5">
+        <h3>Processing Payment for:</h3>
+        <p>Show Name: @ticketData.ShowName</p>
+        <p>Theater Name: @ticketData.TheaterName</p>
+        <p>Theater ID: @theaterId</p>
+        <p>Date: @ticketData.PurchaseDate.ToString("MM/dd/yyyy")</p>
+        <p>Time: @ticketData.Time</p>
+        <p>Number of Tickets: @ticketData.NumberOfTickets</p>
+        @if (ticketInfo != null)
+        {
+            <p>Ticket Id: @ticketInfo.TicketNumber</p>
+            <p>Price per Ticket: @ticketInfo.Price.ToString("C")</p>
+            <p>Total Price: @((ticketInfo.Price * ticketData.NumberOfTickets).ToString("C"))</p>
+        }
+
+    </div>
+    @if (purchaseSuccessful)
+    {
+        <p class="text-success">Purchase successful! Redirecting...</p>
+    }
+
+}
+else
+{
+    <p>No ticket data available.</p>
+}
+
+<button @onclick="RemoveTickets" class="btn btn-danger mt-3">Buy Tickets</button>

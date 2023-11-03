@@ -10,7 +10,6 @@ namespace BroadwayShows.Library.Models
     {
         public CastCrew()
         {
-            // Initialize any defaults or collections if needed in the future
         }
 
         public int SSN { get; set; }
@@ -19,7 +18,7 @@ namespace BroadwayShows.Library.Models
         public char Gender { get; set; }
         public int ShowId { get; set; }
         public int TheaterId { get; set; }
-        public Shows Shows { get; set; }
+        public Shows Show { get; set; }
         public Theater Theater { get; set; }
     }
 

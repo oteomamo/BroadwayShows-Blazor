@@ -28,19 +28,19 @@ namespace BroadwayShows.Library.Services
         }
 
         // Read (Get a single theater by ID)
-        public async Task<Theater> GetShowByIdAsync(int id)
+        public async Task<Theater> GetTheatersByIdAsync(int id)
         {
             return await _context.Theaters.FindAsync(id);
         }
 
         // Read (Get all theaters)
-        public async Task<List<Theater>> GetAllShowsAsync()
+        public async Task<List<Theater>> GetAllTheatersAsync()
         {
             return await _context.Theaters.ToListAsync();
         }
 
         // Update
-        public async Task UpdateShowAsync(Theater theater)
+        public async Task UpdateTheatersAsync(Theater theater)
         {
             if (theater == null) throw new ArgumentNullException(nameof(theater));
 
@@ -59,23 +59,16 @@ namespace BroadwayShows.Library.Services
             }
         }
 
-        // Get all Theaters
-
-        public async Task<List<Theater>> GetAllTheatersAsync() // Changed method name for clarity
-        {
-            return await _context.Theaters.ToListAsync();
-        }
-
         public async Task<List<string>> GetAllTheaterNamesAsync()
         {
             return await _context.Theaters.Select(theater => theater.Name).ToListAsync();
         }
 
         // Get Theater ID by Name
-        public async Task<int?> GetTheaterIdByName(string theaterName)
+        public async Task<int> GetTheaterIdByName(string theaterName)
         {
             var theater = await _context.Theaters.FirstOrDefaultAsync(t => t.Name == theaterName);
-            return theater?.TheaterId;
+            return theater.TheaterId;
         }
 
 

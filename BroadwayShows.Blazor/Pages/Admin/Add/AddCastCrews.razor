@@ -1,0 +1,198 @@
+﻿@page "/AddCastCrews"
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
+@inject CastCrewService CastCrewService
+@inject NavigationManager NavigationManager
+@inject TicketDataService TicketDataService
+@inject TheaterService TheaterService
+@inject TicketSalesService TicketSalesService
+@inject ShowsService ShowsService
+
+<h3>Add Cast/Crew Member</h3>
+
+<p style="color:@(string.IsNullOrEmpty(statusMessage) || statusMessage == "New Cast/Crew member added!" ? "blue" : "red")">@statusMessage</p>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <InputText id="name" class="form-control" @bind-Value="castCrew.Name" />
+            </div>
+
+            <div class="form-group">
+                <label for="workingPosition">Working Position:</label>
+                <InputText id="workingPosition" class="form-control" @bind-Value="castCrew.WorkingPosition" @oninput="SearchPositions" />
+                <div>
+                    @if (positionSuggestions.Any())
+                    {
+                        <ul>
+                            @foreach (var suggestion in positionSuggestions)
+                            {
+                                <li @onclick="() => SelectPosition(suggestion)">
+                                    @suggestion
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <InputSelect id="gender" class="form-control" @bind-Value="castCrew.Gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </InputSelect>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="showSelection">Search a Show:</label>
+                    <select id="showSelection" class="form-control" @bind="selectedShowName" @bind:event="oninput" @onchange="UpdateTheatersBasedOnShow">
+                        <option value="all">Select a show...</option>
+                        @if (shows != null)
+                        {
+                            foreach (var show in shows)
+                            {
+                                <option value="@show.Name">@show.Name</option>
+                            }
+                        }
+                        else
+                        {
+                            <option>Loading show names...</option>
+                        }
+                    </select>
+
+                </div>
+            </div>
+
+            <!-- Row for Theater selection -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="theaterSelection">Select Theater:</label>
+                    <select id="theaterSelection" class="form-control" @bind="selectedTheaterName" @bind:event="oninput">
+                        <option value="all">Select a theater...</option>
+                        @if (theaters != null)
+                        {
+                            foreach (var theater in theaters)
+                            {
+                                <option value="@theater">@theater</option>
+                            }
+                        }
+                        else
+                        {
+                            <option>Loading theater names...</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" @onclick="HandleValidSubmit">Add New Cast/Crew Member</button>
+                <button class="btn btn-secondary mt-2" @onclick="NavigateToAttributes">Cancel</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private CastCrew castCrew = new CastCrew();
+    //private List<Shows> shows = new List<Shows>();
+    //private List<Theater> theaters = new List<Theater>();
+    private List<string> positionSuggestions = new List<string>();
+    private string selectedShowName = "all";
+    private List<string> theaters;
+    private List<(string Name, string Image)> shows;
+    private string statusMessage = "";
+
+    private string selectedTheaterName = "all";
+
+    protected override async Task OnInitializedAsync()
+    {
+        theaters = await TheaterService.GetAllTheaterNamesAsync();
+        shows = await ShowsService.GetShowNamesAndImagesAsync();
+    }
+
+    private void NavigateToPage(string url)
+    {
+        NavigationManager.NavigateTo(url);
+    }
+
+    private void NavigateToAttributes()
+    {
+        NavigateToPage("../AddAttributes");
+    }
+
+    private async Task SearchPositions(ChangeEventArgs e)
+    {
+        string search = e.Value?.ToString();
+
+        if (!string.IsNullOrWhiteSpace(search) && search.Length >= 2) // For example, start suggesting when at least 2 characters are typed
+        {
+            positionSuggestions = await CastCrewService.SearchPositionsAsync(search);
+        }
+        else
+        {
+            positionSuggestions.Clear();
+        }
+    }
+
+    private void SelectPosition(string position)
+    {
+        castCrew.WorkingPosition = position;
+        positionSuggestions.Clear();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (AreFieldsComplete())
+        {
+            castCrew.ShowId = await ShowsService.GetShowIdByName(selectedShowName);
+            castCrew.TheaterId = await TheaterService.GetTheaterIdByName(selectedTheaterName);
+
+            await CastCrewService.CreateCastCrewAsync(castCrew);
+            NavigationManager.NavigateTo("/AddCastCrews");
+            statusMessage = "New Cast/Crew member added!";
+
+            ResetForm();
+        }
+        else
+        {
+            statusMessage = "Please complete all fields.";
+        }
+    }
+
+    private bool AreFieldsComplete()
+    {
+        // Check if all fields are filled in.
+        return
+            !string.IsNullOrEmpty(castCrew.Name) &&
+            !string.IsNullOrEmpty(castCrew.WorkingPosition) &&
+            selectedShowName != "all" &&
+            selectedTheaterName != "all";
+    }
+
+    private void ResetForm()
+    {
+        castCrew = new CastCrew();
+        selectedShowName = "all";
+        selectedTheaterName = "all";
+    }
+
+    private async Task UpdateTheatersBasedOnShow()
+    {
+        if (selectedShowName == "all")
+        {
+            theaters = await TheaterService.GetAllTheaterNamesAsync();
+        }
+        else
+        {
+            theaters = await ShowsService.GetTheatersForShowNameAsync(selectedShowName);
+        }
+        StateHasChanged();
+    }
+
+}

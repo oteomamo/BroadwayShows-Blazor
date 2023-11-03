@@ -1,5 +1,3 @@
-using Auth0.AspNetCore.Authentication;
-using BroadwayShows.Blazor.Account;
 using BroadwayShows.Blazor.Pages;
 using BroadwayShows.Library.Data;
 using BroadwayShows.Library.Services;
@@ -23,16 +21,12 @@ builder.Services.AddScoped<CastCrewService>();
 builder.Services.AddScoped<TicketSalesService>();
 builder.Services.AddScoped<TicketDataService>();
 
-
 builder.Services.AddControllersWithViews();
-builder.Services.AddAuth0WebAppAuthentication(options =>
-{
-    options.Domain = builder.Configuration["Auth0:Domain"];
-    options.ClientId = builder.Configuration["Auth0:ClientId"];
-});
 
-// Configure the HTTP request pipeline.
-builder.Services.ConfigureSameSiteNoneCookies();
+
+
+
+
 
 var app = builder.Build();
 
@@ -40,19 +34,22 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication(); // Ensure this is before UseAuthorization and after UseRouting
+app.UseAuthorization();
+
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-app.UseAuthentication();
-app.UseAuthorization();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
 });
+
 app.Run();

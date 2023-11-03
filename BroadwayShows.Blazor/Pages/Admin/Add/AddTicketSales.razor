@@ -1,0 +1,120 @@
+﻿@page "/AddTicketSales"
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
+@inject TheaterService TheaterService
+@inject TicketSalesService TicketSalesService
+@inject NavigationManager NavigationManager
+
+<h3>Add Ticket Sales</h3>
+
+<p style="color:@(string.IsNullOrEmpty(statusMessage) || statusMessage == "New Ticket Sale added!" ? "blue" : "red")">@statusMessage</p>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" class="form-control" @bind="ticketSale.Date" />
+            </div>
+
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" class="form-control" @bind-value="@timeOnly" @bind-value:event="oninput" />
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="numberOfTickets">Number of Tickets:</label>
+                <InputNumber id="numberOfTickets" class="form-control" @bind-Value="ticketSale.NumberOfTickets" />
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <InputNumber id="price" class="form-control" @bind-Value="ticketSale.Price" />
+            </div>
+            <div class="row mb-3">
+
+            <div class="form-group">
+                <label for="theaterSelection">Select Theater:</label>
+                <select id="theaterSelection" class="form-control" @bind="ticketSale.TheaterId" @bind:event="oninput">
+                    <option value="0">Select a theater...</option>
+                    @if (theaters != null)
+                    {
+                        foreach (var theater in theaters)
+                        {
+                            <option value="@theater.TheaterId">@theater.Name</option>
+                        }
+                    }
+                    else
+                    {
+                        <option>Loading theater names...</option>
+                    }
+                </select>
+            </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" @onclick="HandleValidSubmit">Add New Ticket Sale</button>
+                <button class="btn btn-secondary mt-2" @onclick="NavigateToAttributes">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private TicketSales ticketSale = new TicketSales() { Date = DateTime.Now.Date };
+    private List<Theater> theaters;
+    private string statusMessage = "";
+    private TimeOnly timeOnly
+    {
+        get => TimeOnly.FromTimeSpan(ticketSale.Time);
+        set => ticketSale.Time = value.ToTimeSpan();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        theaters = await TheaterService.GetAllTheatersAsync();
+    }
+
+    private void NavigateToPage(string url)
+    {
+        NavigationManager.NavigateTo(url);
+    }
+
+    private void NavigateToAttributes()
+    {
+        NavigateToPage("../AddAttributes");
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (AreFieldsComplete())
+        {
+            await TicketSalesService.CreateTicketSaleAsync(ticketSale);
+            NavigationManager.NavigateTo("/AddTicketSales");
+            statusMessage = "New Ticket added!";
+            ResetForm();
+        }
+        else
+        {
+            statusMessage = "Please complete all fields.";
+        }
+    }
+
+    private bool AreFieldsComplete()
+    {
+        return
+            ticketSale.Time != default &&
+            ticketSale.Date != default &&
+            ticketSale.NumberOfTickets > 0 &&
+            ticketSale.Price > 0 &&
+            ticketSale.TheaterId > 0;
+    }
+
+    private void ResetForm()
+    {
+        ticketSale = new TicketSales() { Date = DateTime.Now.Date };
+    }
+}

@@ -1,0 +1,39 @@
+﻿@page "/AddAttributes"
+@inject NavigationManager NavigationManager
+
+<h3>Add Attributes</h3>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddCastCrews">Add Cast/Crew</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddShows">Add Shows</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddTheater">Add Theater</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddTicketSales">Add Ticket Sales</button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private void NavigateToAddCastCrews()
+    {
+        NavigationManager.NavigateTo("/AddCastCrews");
+    }
+
+    private void NavigateToAddShows()
+    {
+        NavigationManager.NavigateTo("/AddShows");
+    }
+
+    private void NavigateToAddTheater()
+    {
+        NavigationManager.NavigateTo("/AddTheater");
+    }
+
+    private void NavigateToAddTicketSales()
+    {
+        NavigationManager.NavigateTo("/AddTicketSales");
+    }
+
+}

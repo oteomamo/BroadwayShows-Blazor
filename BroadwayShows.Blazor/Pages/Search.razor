@@ -115,12 +115,12 @@
 
 
     <!-- Row for Submit button -->
+
     <div class="row mb-3">
         <div class="col">
             <button class="btn btn-primary" @onclick="BuyTickets" disabled="@isProcessing">Buy Tickets</button>
         </div>
     </div>
-
 </div>
 
 <div class="container mt-5">
@@ -134,7 +134,7 @@
 
 
 @code {
-    private string selectedShowName = "all"; // Initialize to "All Shows"
+    private string selectedShowName = "all"; 
     private List<string> theaters;
     private List<(string Name, string Image)> shows;
 
@@ -151,6 +151,8 @@
 
     private bool isProcessing = false;
     private TicketPurchaseData ticketPurchaseData;
+
+
 
 
     protected override async Task OnInitializedAsync()
@@ -206,11 +208,10 @@
                 }
             //}
 
-            // Remove duplicates and sort the times
             availableTimes = allAvailableTimes.Distinct().OrderBy(t => t).ToList();
         }
 
-        StateHasChanged(); // To refresh the component
+        StateHasChanged();
 
         await UpdateAvailableTickets();
     }
@@ -264,8 +265,6 @@
 
         StateHasChanged(); // To refresh the component
     }
-
-
 
 
 

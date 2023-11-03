@@ -1,0 +1,264 @@
+﻿@page "/SearchShows/{ShowId:int}"
+
+@using BroadwayShows.Library.Services
+@inject ShowsService ShowsService
+@inject TheaterService TheaterService
+@inject TicketSalesService TicketSalesService
+@inject CastCrewService CastCrewService
+@inject NavigationManager NavigationManager
+@inject TicketDataService TicketDataService
+
+@if (show.HasValue)
+{
+    <div style="display: flex; align-items: center;">
+        <img src="/css/Images/@show.Value.Image" alt="@show.Value.Name" style="max-width: 200px; margin-right: 20px;" />
+        <h2>@show.Value.Name</h2>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label for="theaterSelection">Select Theater:</label>
+            <select id="theaterSelection" class="form-control" @bind="selectedTheaterName" @bind:event="oninput" @onchange="UpdateTimesBasedOnSelection">
+                <option value="all">All Theaters</option>
+                @if (theaters != null)
+                {
+                    foreach (var theater in theaters)
+                    {
+                        <option value="@theater">@theater</option>
+                    }
+                }
+                else
+                {
+                    <option>Loading theater names...</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+    <!-- Date range selection -->
+    <div class="row mb-3">
+        <div class="col">
+            <label for="startDate">From:</label>
+            <input type="date" id="startDate" class="form-control" @bind="startDate" @bind:event="oninput" @onchange="UpdateTimesBasedOnSelection">
+        </div>
+        <div class="col">
+            <label for="endDate">Till:</label>
+            <input type="date" id="endDate" class="form-control" @bind="endDate" @bind:event="oninput" @onchange="UpdateTimesBasedOnSelection">
+        </div>
+    </div>
+
+    <!-- Show Available Times -->
+    @if (availableTimes != null && availableTimes.Any())
+    {
+        @foreach (var time in availableTimes)
+        {
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Time: @time.ToString(@"hh\:mm")</label>
+                </div>
+                <div class="col">
+                    <input type="number" min="1" max="@maxTickets" @bind="ticketCounts[time]" @bind:event="oninput" placeholder="Number of tickets">
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" @onclick="() => BuyTicketsForTime(time)" disabled="@isProcessing">Buy Tickets</button>
+                </div>
+            </div>
+        }
+
+    }
+    else
+    {
+        <p>No available times for the selected date range and theater.</p>
+    }
+
+    <div class="alert alert-info">
+        @feedbackMessage
+    </div>
+}
+else
+{
+    <p>Loading show details...</p>
+}
+
+@code {
+    [Parameter]
+    public int ShowId { get; set; }
+    private List<string> theaters;
+    private string selectedTheaterName = "all";
+
+    private DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+    private DateTime endDate = DateTime.Now;
+
+    private string selectedTime = "";
+    private List<TimeSpan> availableTimes;
+    private string selectedShowName = "all"; 
+    private List<(string Name, string Image)> shows;
+
+    private List<(DateTime Date, TimeSpan Time)> availableTimesAndDates;
+
+
+    private List<int> ticketOptions = new List<int> { 1 };
+    private Dictionary<TimeSpan, int> ticketCounts = new Dictionary<TimeSpan, int>();
+    private int maxTickets = 100;
+
+    private bool isProcessing = false;
+    private TicketPurchaseData ticketPurchaseData;
+    private string feedbackMessage = "";  
+
+
+    private (int Id, string Name, string Image)? show;
+
+    private async void BuyTicketsForTime(TimeSpan time)
+    {
+        selectedTime = time.ToString("hh\\:mm");
+        if (ticketCounts.ContainsKey(time))
+        {
+            _ticketCount = ticketCounts[time]; // Set the ticket count for the selected time
+        }
+        BuyTickets();
+    }
+
+    private void ValidateTicketCount()
+    {
+        if (ticketCount > maxTickets)
+        {
+            feedbackMessage = $"You can only book a maximum of {maxTickets} tickets for the selected timeslot.";
+            ticketCount = maxTickets;
+        }
+    }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var showDetails = await ShowsService.GetShowByIdAsync(ShowId);
+        if (showDetails != null)
+        {
+            show = (showDetails.ShowId, showDetails.Name, showDetails.Image);
+            // Now get theaters for this show
+            theaters = await ShowsService.GetTheatersForShowAsync(ShowId);
+        }
+    }
+
+    private async Task UpdateTimesBasedOnSelection()
+    {
+        List<string> theaterListForShow;
+        if (selectedTheaterName == "all")
+        {
+            theaterListForShow = theaters;
+        }
+        else
+        {
+            theaterListForShow = new List<string> { selectedTheaterName };
+        }
+
+        var allAvailableTimes = new List<TimeSpan>();
+        foreach (var theaterName in theaterListForShow)
+        {
+            int? theaterId = await TheaterService.GetTheaterIdByName(theaterName);
+            if (theaterId.HasValue)
+            {
+                var times = await TicketSalesService.GetAvailableTimesForTheaterInDateRange(theaterId.Value, startDate, endDate);
+                allAvailableTimes.AddRange(times);
+            }
+        }
+
+        availableTimes = allAvailableTimes.Distinct().OrderBy(t => t).ToList();
+        foreach (var time in availableTimes)
+        {
+            if (!ticketCounts.ContainsKey(time))
+            {
+                ticketCounts[time] = 1;
+            }
+        }
+
+        StateHasChanged(); 
+    }
+
+    private int _ticketCount = 1;
+    public int ticketCount
+    {
+        get
+        {
+            return _ticketCount;
+        }
+        set
+        {
+            _ticketCount = (value > maxTickets) ? maxTickets : value;
+        }
+    }
+
+
+    private async Task UpdateAvailableTickets()
+    {
+        if (!string.IsNullOrEmpty(selectedTime) && DateTime.TryParse(selectedTime, out DateTime parsedTime))
+        {
+            var timeSlot = parsedTime.TimeOfDay;
+
+            int? nullableTheaterId = await TheaterService.GetTheaterIdByName(selectedTheaterName);
+
+            if (!nullableTheaterId.HasValue)
+            {
+                return;
+            }
+
+            int theaterId = nullableTheaterId.Value;
+
+            maxTickets = await TicketSalesService.GetAvailableTicketsForTimeSlot(theaterId, startDate, timeSlot);
+        }
+        else
+        {
+            maxTickets = 1; 
+        }
+
+        StateHasChanged(); 
+    }
+
+
+
+
+    private async void BuyTickets()
+    {
+        isProcessing = true; 
+
+        if (string.IsNullOrEmpty(selectedTime))
+        {
+            feedbackMessage = "Please select a Time.";
+            StateHasChanged();
+            return;
+        }
+
+        int? nullableTheaterId = await TheaterService.GetTheaterIdByName(selectedTheaterName);
+
+        if (!nullableTheaterId.HasValue)
+        {
+            feedbackMessage = "Theater not found!";
+            StateHasChanged();
+            return;
+        }
+
+        int theaterId = nullableTheaterId.Value;
+
+        DateTime? exactDate = await TicketSalesService.GetExactDateForSelectedTime(theaterId, TimeSpan.Parse(selectedTime), ticketCount);
+
+        if (!exactDate.HasValue)
+        {
+            feedbackMessage = "Sorry, we couldn't find a date that matches your criteria.";
+            StateHasChanged();
+            return;
+        }
+
+        ticketPurchaseData = new TicketPurchaseData
+            {
+                ShowName = selectedShowName,
+                TheaterName = selectedTheaterName,
+                PurchaseDate = exactDate.Value,
+                Time = selectedTime,
+                NumberOfTickets = ticketCount
+            };
+
+        TicketDataService.CurrentPurchaseData = ticketPurchaseData;
+        NavigationManager.NavigateTo("/ProcessPayment");
+    }
+}

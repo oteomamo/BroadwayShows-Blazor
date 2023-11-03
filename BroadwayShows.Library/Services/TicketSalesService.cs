@@ -1,5 +1,6 @@
 ﻿using BroadwayShows.Library.Data;
 using BroadwayShows.Library.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace BroadwayShows.Library.Services
         }
 
         // Create
-        public async Task CreateShowAsync(TicketSales ticketSales)
+        public async Task CreateTicketSaleAsync(TicketSales ticketSales)
         {
             if (ticketSales == null) throw new ArgumentNullException(nameof(ticketSales));
 
@@ -28,19 +29,19 @@ namespace BroadwayShows.Library.Services
         }
 
         // Read (Get a single ticketSales by ID)
-        public async Task<TicketSales> GetShowByIdAsync(int id)
+        public async Task<TicketSales> GetTicketSaleByIdAsync(int id)
         {
             return await _context.TicketSales.FindAsync(id);
         }
 
         // Read (Get all ticketSaless)
-        public async Task<List<TicketSales>> GetAllShowsAsync()
+        public async Task<List<TicketSales>> GetAllTicketSaleAsync()
         {
             return await _context.TicketSales.ToListAsync();
         }
 
         // Update
-        public async Task UpdateShowAsync(TicketSales ticketSales)
+        public async Task UpdateTicketSaleAsync(TicketSales ticketSales)
         {
             if (ticketSales == null) throw new ArgumentNullException(nameof(ticketSales));
 
@@ -49,7 +50,7 @@ namespace BroadwayShows.Library.Services
         }
 
         // Delete
-        public async Task DeleteShowAsync(int id)
+        public async Task DeleteTicketSaleAsync(int id)
         {
             var ticketSalesToDelete = await _context.TicketSales.FindAsync(id);
             if (ticketSalesToDelete != null)
@@ -94,6 +95,64 @@ namespace BroadwayShows.Library.Services
             return ticketRecord?.Date;
         }
 
+        public async Task<TicketSales> GetTicketSalesByIdAsync(int theaterId, DateTime date, TimeSpan time)
+        {
+            return await _context.TicketSales
+                                 .Where(ts => ts.TheaterId == theaterId && ts.Date.Date == date.Date && ts.Time == time)
+                                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<TicketSales> GetTicketSalesForShowAsync(int theaterId, DateTime date, TimeSpan time)
+        {
+            return await _context.TicketSales
+                .FirstOrDefaultAsync(ts => ts.TheaterId == theaterId && ts.Date.Date == date.Date && ts.Time == time);
+        }
+
+        public async Task CreateTicketSale2Async(TicketSales ticketSales)
+        {
+            if (ticketSales == null) throw new ArgumentNullException(nameof(ticketSales));
+
+            var existingTicketSales = await _context.TicketSales
+                                                    .FirstOrDefaultAsync(ts => ts.Date == ticketSales.Date
+                                                                                && ts.Time == ticketSales.Time
+                                                                                && ts.TheaterId == ticketSales.TheaterId);
+
+            int existingTicketNumber = existingTicketSales?.TicketNumber ?? 0;
+
+            if ((existingTicketNumber + ticketSales.TicketNumber) > ticketSales.NumberOfTickets)
+            {
+                throw new InvalidOperationException("The number of tickets exceeds the available tickets for this time slot.");
+            }
+
+            _context.TicketSales.Add(ticketSales);
+            await _context.SaveChangesAsync();
+        }
+
+
+        public async Task RemoveTicketsAsync(int ticketNumber, int numberOfTicketsToRemove)
+        {
+            var existingTicket = await _context.TicketSales
+                                               .Where(ts => ts.TicketNumber == ticketNumber)
+                                               .FirstOrDefaultAsync();
+
+            if (existingTicket != null)
+            {
+                if (existingTicket.NumberOfTickets >= numberOfTicketsToRemove)
+                {
+                    existingTicket.NumberOfTickets -= numberOfTicketsToRemove;
+                    _context.Entry(existingTicket).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Not enough tickets to remove.");
+                }
+            }
+            else
+            {
+                throw new Exception("Ticket number not found.");
+            }
+        }
 
 
     }

@@ -1,0 +1,39 @@
+﻿@page "/UpdateAttributes"
+@inject NavigationManager NavigationManager
+
+<h3>Remove Attributes</h3>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddCastCrews">Update Cast/Crew</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddShows">Update Shows</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddTheater">Update Theater</button>
+            <button class="btn btn-info mt-2" @onclick="NavigateToAddTicketSales">Update Ticket Sales</button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private void NavigateToAddCastCrews()
+    {
+        NavigationManager.NavigateTo("/UpdateCastCrews");
+    }
+
+    private void NavigateToAddShows()
+    {
+        NavigationManager.NavigateTo("/UpdateShows");
+    }
+
+    private void NavigateToAddTheater()
+    {
+        NavigationManager.NavigateTo("/UpdateTheater");
+    }
+
+    private void NavigateToAddTicketSales()
+    {
+        NavigationManager.NavigateTo("/UpdateTicketSales");
+    }
+
+}

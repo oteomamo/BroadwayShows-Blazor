@@ -28,6 +28,7 @@ namespace BroadwayShows.Library.Services
         }
 
         // Create
+        // Create
         public async Task CreateShowAsync(Shows show)
         {
             if (show == null) throw new ArgumentNullException(nameof(show));
@@ -35,6 +36,7 @@ namespace BroadwayShows.Library.Services
             _context.Shows.Add(show);
             await _context.SaveChangesAsync();
         }
+
 
         // Read (Get a single show by ID)
         public async Task<Shows> GetShowByIdAsync(int id)
@@ -84,9 +86,25 @@ namespace BroadwayShows.Library.Services
                                                 .ToList());
         }
 
+        public async Task<List<(int Id, string Name, string Image)>> GetShowIdNamesAndImagesAsync()
+        {
+            return await _context.Shows
+                       .Select(show => new { show.ShowId, show.Name, show.Image })
+                       .ToListAsync()
+                       .ContinueWith(task => task.Result
+                                                .Select(result => (result.ShowId, result.Name, result.Image))
+                                                .ToList());
+        }
+        public async Task<int> GetShowIdByName(string showName)
+        {
+            var show = await _context.Shows.FirstOrDefaultAsync(s => s.Name == showName);
+            return show.ShowId;
+        }
+
+
         public async Task<List<string>> GetTheatersForShowAsync(int showId)
         {
-            if (showId == -1) // Assuming -1 represents "All Shows"
+            if (showId == -1) 
             {
                 return await _context.Theaters
                                      .Select(theater => theater.Name)
@@ -114,7 +132,7 @@ namespace BroadwayShows.Library.Services
 
             if (showId == 0)
             {
-                return new List<string>();  // Return empty list if showName doesn't match any show.
+                return new List<string>();
             }
 
             return await _context.CastCrews
@@ -125,6 +143,19 @@ namespace BroadwayShows.Library.Services
                                        (cc, theater) => theater.Name)
                                  .Distinct()
                                  .ToListAsync();
+        }
+        public async Task<List<string>> SearchGenresAsync(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return new List<string>();
+            }
+
+            return await _context.Shows
+                .Where(s => s.Genre.Contains(search))
+                .Select(s => s.Genre)
+                .Distinct()
+                .ToListAsync();
         }
 
 

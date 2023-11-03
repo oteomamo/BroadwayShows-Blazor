@@ -1,11 +1,11 @@
 ﻿@page "/"
 @using BroadwayShows.Library.Services
 @inject ShowsService ShowsService
+@inject NavigationManager NavigationManager
 
 <div class="search-container">
     <NavLink href="/search" class="btn btn-primary search-button">Find a Show</NavLink>
 </div>
-
 
 @if (shows == null)
 {
@@ -16,8 +16,8 @@ else
     <div class="show-container">
         @foreach (var show in shows)
         {
-            <div class="show-card">
-                <img src="/css/Images/@show.Image" alt="@show.Name" />
+            <div class="show-card" @onclick="@(() => NavigateToShowDetails(show.Id))">
+                <img src="/css/Images/@show.Image" alt="@show.Name" style="cursor: pointer;" />
                 <p>@show.Name</p>
             </div>
         }
@@ -25,10 +25,15 @@ else
 }
 
 @code {
-    private List<(string Name, string Image)> shows;
+    private List<(int Id, string Name, string Image)> shows;
 
     protected override async Task OnInitializedAsync()
     {
-        shows = await ShowsService.GetShowNamesAndImagesAsync();
+        shows = await ShowsService.GetShowIdNamesAndImagesAsync();
+    }
+
+    private void NavigateToShowDetails(int showId)
+    {
+        NavigationManager.NavigateTo($"/SearchShows/{showId}");
     }
 }

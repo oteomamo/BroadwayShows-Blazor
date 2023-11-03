@@ -1,0 +1,132 @@
+﻿@page "/SearchCastCrew"
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services
+@inject ShowsService ShowsService
+@inject TheaterService TheaterService
+@inject TicketSalesService TicketSalesService
+@inject CastCrewService CastCrewService
+@inject NavigationManager NavigationManager
+@inject TicketDataService TicketDataService
+
+<h2>BROADWAY SHOWS DATABASE!!!</h2>
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h4>Search Cast and Crew by Show Name, Position and Gender</h4>
+
+        <!-- Row for Show selection -->
+        <div class="row mb-3">
+            <div class="col">
+                <label for="showSelection">Search a Show:</label>
+                <select id="showSelection" class="form-control" @bind="selectedShowName" @bind:event="oninput">
+                    <option value="all">All Shows</option>
+                    @if (shows != null)
+                    {
+                        foreach (var show in shows)
+                        {
+                            <option value="@show.Name">@show.Name</option>
+                        }
+                    }
+                    else
+                    {
+                        <option>Loading show names...</option>
+                    }
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="positionDropdown">Select a Position:</label>
+            <select id="positionDropdown" class="form-control" @bind="selectedPosition">
+                <option value="all">All Positions</option>
+                @if (positions != null)
+                {
+                    foreach (var position in positions)
+                    {
+                        <option value="@position">@position</option>
+                    }
+                }
+                else
+                {
+                    <option>Loading positions...</option>
+                }
+            </select>
+        </div>
+        <div class="row mb-3">
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <InputSelect id="gender" class="form-control" @bind-Value="selectedGender">
+                <option value=''>All</option>
+                <option value='M'>Male</option>
+                <option value='F'>Female</option>
+            </InputSelect>
+        </div>
+        </div>
+        <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary" @onclick="LoadData">Load Table</button>
+        <button class="btn btn-secondary mt-2" @onclick="NavigateToAttributes">Cancel</button>
+        </div>
+    </div>
+
+    <div class="col-md-12 mt-3">
+        <!-- moved to a separate div below the filter options -->
+        @if (castAndCrew != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Working Position</th>
+                        <th>Gender</th>
+                        <th>Show Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var member in castAndCrew)
+                    {
+                        <tr>
+                            <td>@member.Name</td>
+                            <td>@member.WorkingPosition</td> 
+                            <td>@member.Gender</td>
+                            <td>@member.Show.Name</td> 
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+@code {
+    private string selectedShowName = "all";
+    private List<(string Name, string Image)> shows;
+    private List<CastCrew> castAndCrew; 
+    private string selectedPosition;
+    private char selectedGender;
+    private List<string> positions;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        shows = await ShowsService.GetShowNamesAndImagesAsync();
+        positions = await CastCrewService.GetAllDistinctPositionsAsync();
+    }
+
+    private async void LoadData() 
+    {
+        castAndCrew = await CastCrewService.SearchCastCrewAsync(selectedShowName, selectedPosition, selectedGender);
+    }
+
+    private void NavigateToPage(string url)
+    {
+        NavigationManager.NavigateTo(url);
+    }
+
+    private void NavigateToAttributes()
+    {
+        NavigateToPage("../SearchAttributes");
+    }
+
+}

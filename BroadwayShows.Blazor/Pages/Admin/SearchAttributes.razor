@@ -1,0 +1,39 @@
+﻿@page "/SearchAttributes"
+@inject NavigationManager NavigationManager
+
+<h3>Remove Attributes</h3>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary mt-2" @onclick="NavigateToAddCastCrews">Search Cast/Crew</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddShows">Search Shows</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddTheater">Search Theater</button>
+            <button class="btn btn-secondary mt-2" @onclick="NavigateToAddTicketSales">Search Ticket Sales</button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private void NavigateToAddCastCrews()
+    {
+        NavigationManager.NavigateTo("/SearchCastCrew");
+    }
+
+    private void NavigateToAddShows()
+    {
+        NavigationManager.NavigateTo("/SearchShows");
+    }
+
+    private void NavigateToAddTheater()
+    {
+        NavigationManager.NavigateTo("/SearchTheater");
+    }
+
+    private void NavigateToAddTicketSales()
+    {
+        NavigationManager.NavigateTo("/SearchTicketSales");
+    }
+
+}

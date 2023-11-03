@@ -1,0 +1,122 @@
+﻿@page "/AddShows"
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
+@inject CastCrewService CastCrewService
+@inject NavigationManager NavigationManager
+@inject TicketDataService TicketDataService
+@inject TheaterService TheaterService
+@inject TicketSalesService TicketSalesService
+@inject ShowsService ShowsService
+
+<h3>Add Show</h3>
+
+<p style="color:@(string.IsNullOrEmpty(statusMessage) || statusMessage == "New Show added!" ? "blue" : "red")">@statusMessage</p>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="name">Show Name:</label>
+                <InputText id="name" class="form-control" @bind-Value="show.Name" />
+            </div>
+
+            <div class="form-group">
+                <label for="releaseDate">Release Date:</label>
+                <input type="date" id="releaseDate" class="form-control" @bind="show.ReleaseDate" @bind:event="oninput" />
+            </div>
+
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <InputText id="genre" class="form-control" @bind-Value="show.Genre" @oninput="SearchGenres" />
+                <div>
+                    @if (genreSuggestions.Any())
+                    {
+                        <ul>
+                            @foreach (var suggestion in genreSuggestions)
+                            {
+                                <li @onclick="() => SelectGenre(suggestion)">
+                                    @suggestion
+                                </li>
+                            }
+                        </ul>
+                     }
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="form-group">
+                    <label for="image">Image (URL):</label>
+                    <InputText id="image" class="form-control" @bind-Value="show.Image" />
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" @onclick="HandleValidSubmit">Add New Show</button>
+                <button class="btn btn-secondary mt-2" @onclick="NavigateToAttributes">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private Shows show = new Shows() { ReleaseDate = DateTime.Now.Date };  
+    private string statusMessage = "";
+    private List<string> genreSuggestions = new List<string>();
+
+    protected override void OnInitialized()
+    {
+    }
+
+    private void NavigateToAttributes()
+    {
+        NavigationManager.NavigateTo("/AddAttributes");
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (AreFieldsComplete())
+        {
+            await ShowsService.CreateShowAsync(show);
+            NavigationManager.NavigateTo("/AddShows");
+            statusMessage = "New Show added!";
+            ResetForm();
+        }
+        else
+        {
+            statusMessage = "Please complete all fields.";
+        }
+    }
+
+    private async Task SearchGenres(ChangeEventArgs e)
+    {
+        string search = e.Value?.ToString();
+
+        if (!string.IsNullOrWhiteSpace(search) && search.Length >= 2)
+        {
+            genreSuggestions = await ShowsService.SearchGenresAsync(search);
+        }
+        else
+        {
+            genreSuggestions.Clear();
+        }
+    }
+
+    private void SelectGenre(string genre)
+    {
+        show.Genre = genre;
+        genreSuggestions.Clear();
+    }
+
+    private bool AreFieldsComplete()
+    {
+        return
+            !string.IsNullOrEmpty(show.Name) &&
+            show.ReleaseDate != null &&
+            !string.IsNullOrEmpty(show.Genre);
+    }
+
+    private void ResetForm()
+    {
+        show = new Shows() { ReleaseDate = DateTime.Now.Date };
+    }
+}
+

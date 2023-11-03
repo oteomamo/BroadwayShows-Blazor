@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BroadwayShows.Library.Migrations
 {
     [DbContext(typeof(BroadwayShowsContext))]
-    [Migration("20231030044952_YourMigrationName")]
-    partial class YourMigrationName
+    [Migration("20231103030218_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,6 @@ namespace BroadwayShows.Library.Migrations
                     b.Property<int>("ShowId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShowsShowId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TheaterId")
                         .HasColumnType("int");
 
@@ -51,7 +48,7 @@ namespace BroadwayShows.Library.Migrations
 
                     b.HasKey("SSN");
 
-                    b.HasIndex("ShowsShowId");
+                    b.HasIndex("ShowId");
 
                     b.HasIndex("TheaterId");
 
@@ -91,10 +88,6 @@ namespace BroadwayShows.Library.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("AddressDetail")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -140,9 +133,9 @@ namespace BroadwayShows.Library.Migrations
 
             modelBuilder.Entity("BroadwayShows.Library.Models.CastCrew", b =>
                 {
-                    b.HasOne("BroadwayShows.Library.Models.Shows", "Shows")
+                    b.HasOne("BroadwayShows.Library.Models.Shows", "Show")
                         .WithMany("CastCrews")
-                        .HasForeignKey("ShowsShowId")
+                        .HasForeignKey("ShowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -152,7 +145,7 @@ namespace BroadwayShows.Library.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Shows");
+                    b.Navigation("Show");
 
                     b.Navigation("Theater");
                 });

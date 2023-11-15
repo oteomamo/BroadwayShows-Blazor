@@ -1,4 +1,5 @@
 ﻿using BroadwayShows.Library.Models;
+using BroadwayShows.Library.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
@@ -32,14 +33,17 @@ namespace BroadwayShows.Library.Data
         public DbSet<TicketSales> TicketSales { get; set; }
         public DbSet<CastCrew> CastCrews { get; set; }
         public DbSet<Theater> Theaters { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<WorkingPosition> WorkingPositions { get; set; }
 
-        // Optional: If you need specific configurations for models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CastCrew>().HasKey(c => c.SSN);
             modelBuilder.Entity<Shows>().HasKey(c => c.ShowId);
             modelBuilder.Entity<TicketSales>().HasKey(c => c.TicketNumber);
             modelBuilder.Entity<Theater>().HasKey(c => c.TheaterId);
+            modelBuilder.Entity<Genre>().HasKey(c => c.GenreId);
+            modelBuilder.Entity<WorkingPosition>().HasKey(c => c.WorkingPositionID);
         }
     }
 }

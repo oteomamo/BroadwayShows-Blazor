@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BroadwayShows.Library.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,8 @@ namespace BroadwayShows.Library.Models
 
         public int SSN { get; set; }
         public string Name { get; set; }
-        public string WorkingPosition { get; set; }
+        public int WorkingPositionID { get; set; }
+        public WorkingPosition WorkingPosition { get; set; }
         public char Gender { get; set; }
         public int ShowId { get; set; }
         public int TheaterId { get; set; }

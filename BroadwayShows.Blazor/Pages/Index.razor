@@ -1,11 +1,62 @@
 ﻿@page "/"
 @using BroadwayShows.Library.Services
+@using System.Text.Json;
+@using Microsoft.AspNetCore.WebUtilities;
 @inject ShowsService ShowsService
 @inject NavigationManager NavigationManager
 
-<div class="search-container">
-    <NavLink href="/search" class="btn btn-primary search-button">Find a Show</NavLink>
+<div class="container mt-5">
+    <h3 class="mb-4">Find Tickets for a Show</h3>
+
+    <!-- Row for Show selection -->
+    <div class="row mb-3">
+        <div class="col">
+            <label for="showSelection">Choose a Show:</label>
+            <select id="showSelection" class="form-control" @bind="selectedShowName">
+                <option value="all">All Shows</option>
+                @if (shows != null)
+                {
+                    foreach (var show in shows)
+                    {
+                        <option value="@show.Id.ToString()">@show.Name</option>
+                    }
+                }
+                else
+                {
+                    <option>Loading show names...</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <!-- Rows for Date selection -->
+    <div class="row mb-3">
+        <div class="col">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" class="form-control" @bind="startDate">
+        </div>
+        <div class="col">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" class="form-control" @bind="endDate">
+        </div>
+    </div>
+
+    <!-- Row for Number of tickets selection -->
+    <div class="row mb-3">
+        <div class="col">
+            <label for="ticketsCount">Number of Tickets:</label>
+            <input id="ticketsCount" class="form-control" type="number" min="1" @bind="ticketCount">
+        </div>
+    </div>
+
+    <!-- Find Tickets button -->
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary" @onclick="SearchShows">Find Tickets</button>
+        </div>
+    </div>
 </div>
+
 
 @if (shows == null)
 {
@@ -13,6 +64,7 @@
 }
 else
 {
+    <!-- Display show cards -->
     <div class="show-container">
         @foreach (var show in shows)
         {
@@ -25,7 +77,11 @@ else
 }
 
 @code {
+    private string selectedShowName = "all";
     private List<(int Id, string Name, string Image)> shows;
+    private DateOnly startDate = DateOnly.FromDateTime(DateTime.Now);
+    private DateOnly endDate = DateOnly.FromDateTime(DateTime.Now);
+    private int ticketCount = 1;
 
     protected override async Task OnInitializedAsync()
     {
@@ -34,6 +90,21 @@ else
 
     private void NavigateToShowDetails(int showId)
     {
-        NavigationManager.NavigateTo($"/SearchShows/{showId}");
+        NavigationManager.NavigateTo($"/showdetails/{showId}");
     }
+
+    private void SearchShows()
+    {
+        var queryParameters = new Dictionary<string, string>
+            {
+                ["showId"] = selectedShowName,
+                ["startDate"] = startDate.ToString("yyyy-MM-dd"),
+                ["endDate"] = endDate.ToString("yyyy-MM-dd"),
+                ["ticketCount"] = ticketCount.ToString()
+            };
+
+        var queryString = QueryHelpers.AddQueryString("/searchresults", queryParameters);
+        NavigationManager.NavigateTo(queryString);
+    }
+
 }

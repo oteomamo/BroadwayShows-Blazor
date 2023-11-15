@@ -28,13 +28,11 @@ namespace BroadwayShows.Library.Services
             await _context.SaveChangesAsync();
         }
 
-        // Read (Get a single ticketSales by ID)
         public async Task<TicketSales> GetTicketSaleByIdAsync(int id)
         {
             return await _context.TicketSales.FindAsync(id);
         }
 
-        // Read (Get all ticketSaless)
         public async Task<List<TicketSales>> GetAllTicketSaleAsync()
         {
             return await _context.TicketSales.ToListAsync();
@@ -60,7 +58,7 @@ namespace BroadwayShows.Library.Services
             }
         }
 
-        public async Task<List<TimeSpan>> GetAvailableTimesForTheaterInDateRange(int theaterId, DateTime from, DateTime till)
+        public async Task<List<TimeSpan>> GetAvailableTimesForTheaterInDateRange(int theaterId, DateOnly from, DateOnly till)
         {
             return await _context.TicketSales
                 .Where(ts => ts.TheaterId == theaterId && ts.Date >= from && ts.Date <= till)
@@ -69,9 +67,9 @@ namespace BroadwayShows.Library.Services
                 .ToListAsync();
         }
 
-        public async Task<int> GetAvailableTicketsForTimeSlot(int theaterId, DateTime date, TimeSpan timeSlot)
+
+        public async Task<int> GetAvailableTicketsForTimeSlot(int theaterId, DateOnly date, TimeSpan timeSlot)
         {
-            // Fetch the ticket record for that time slot, theater, and date
             var ticketRecord = await _context.TicketSales
                                              .FirstOrDefaultAsync(ts => ts.TheaterId == theaterId && ts.Date == date && ts.Time == timeSlot);
 
@@ -81,11 +79,27 @@ namespace BroadwayShows.Library.Services
             }
             else
             {
-                return 0; // No record found for that time slot
+                return 0; 
             }
         }
 
-        public async Task<DateTime?> GetExactDateForSelectedTime(int theaterId, TimeSpan time, int requiredTickets)
+        public async Task<decimal> GetTicketPriceForShow(int showId)
+        {
+            // This query assumes that each show has tickets available at the theater listed in the castcrews table
+            // and that you want the price of any ticket for that show at that theater.
+            var ticketPrice = await _context.TicketSales
+                .Join(_context.CastCrews,
+                      ts => ts.TheaterId,
+                      cc => cc.TheaterId,
+                      (ts, cc) => new { TicketSales = ts, CastCrews = cc })
+                .Where(joined => joined.CastCrews.ShowId == showId)
+                .Select(joined => joined.TicketSales.Price)
+                .FirstOrDefaultAsync(); // Gets the price of the first ticket found
+
+            return ticketPrice; // This will be null if no matching tickets are found
+        }
+
+        public async Task<DateOnly?> GetExactDateForSelectedTime(int theaterId, TimeSpan time, int requiredTickets)
         {
             var ticketRecord = await _context.TicketSales
                                              .Where(ts => ts.TheaterId == theaterId && ts.Time == time && ts.NumberOfTickets >= requiredTickets)
@@ -95,18 +109,20 @@ namespace BroadwayShows.Library.Services
             return ticketRecord?.Date;
         }
 
-        public async Task<TicketSales> GetTicketSalesByIdAsync(int theaterId, DateTime date, TimeSpan time)
+        public async Task<TicketSales> GetTicketSalesByIdAsync(int theaterId, DateOnly date, TimeSpan time)
         {
             return await _context.TicketSales
-                                 .Where(ts => ts.TheaterId == theaterId && ts.Date.Date == date.Date && ts.Time == time)
+                                 .Where(ts => ts.TheaterId == theaterId && ts.Date == date && ts.Time == time)
                                  .FirstOrDefaultAsync();
         }
 
         public async Task<TicketSales> GetTicketSalesForShowAsync(int theaterId, DateTime date, TimeSpan time)
         {
+            var dateOnly = DateOnly.FromDateTime(date);
             return await _context.TicketSales
-                .FirstOrDefaultAsync(ts => ts.TheaterId == theaterId && ts.Date.Date == date.Date && ts.Time == time);
+                .FirstOrDefaultAsync(ts => ts.TheaterId == theaterId && ts.Date == dateOnly && ts.Time == time);
         }
+
 
         public async Task CreateTicketSale2Async(TicketSales ticketSales)
         {
@@ -152,6 +168,25 @@ namespace BroadwayShows.Library.Services
             {
                 throw new Exception("Ticket number not found.");
             }
+        }
+
+        public async Task<List<TimeSpan>> GetAvailableTimesForShow(int showId, DateOnly from, DateOnly till)
+        {
+            // First, find the TheaterId(s) for the show from the castcrews table.
+            var theaterIdsForShow = await _context.CastCrews
+                .Where(cc => cc.ShowId == showId)
+                .Select(cc => cc.TheaterId)
+                .Distinct()
+                .ToListAsync();
+
+            // Now, fetch the available times for these theaters from the ticketsales table within the date range.
+            var availableTimes = await _context.TicketSales
+                .Where(ts => theaterIdsForShow.Contains(ts.TheaterId) && ts.Date >= from && ts.Date <= till)
+                .Select(ts => ts.Time)
+                .Distinct()
+                .ToListAsync();
+
+            return availableTimes;
         }
 
 

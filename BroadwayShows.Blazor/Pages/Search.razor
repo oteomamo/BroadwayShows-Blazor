@@ -1,5 +1,5 @@
 ﻿@page "/search"
-@using BroadwayShows.Library.Services
+@* @using BroadwayShows.Library.Services
 @inject ShowsService ShowsService
 @inject TheaterService TheaterService
 @inject TicketSalesService TicketSalesService
@@ -36,7 +36,6 @@
     </div>
 
 
-    <!-- Row for Theater selection -->
     <div class="row mb-3">
         <div class="col">
             <label for="theaterSelection">Select Theater:</label>
@@ -59,7 +58,6 @@
 
 
 
-    <!-- Row for Date range selection -->
     <div class="row mb-3">
         <div class="col">
             <label for="startDate">From:</label>
@@ -71,7 +69,6 @@
         </div>
     </div>
 
-    <!-- Row for Time selection -->
     <div class="row mb-3">
         <div class="col">
             <label for="timeSelection">Select Time:</label>
@@ -114,7 +111,6 @@
     </div>
 
 
-    <!-- Row for Submit button -->
 
     <div class="row mb-3">
         <div class="col">
@@ -140,11 +136,11 @@
 
 
     private string selectedTheaterName = "all";
-    private DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-    private DateTime endDate = DateTime.Now;
+    private DateOnly startDate;// = new DateOnly(DateOnly.Now.Year, DateOnly.Now.Month, DateOnly.Now.Day);
+    private DateOnly endDate;
     private string selectedTime = "";
     private List<TimeSpan> availableTimes;
-    private string feedbackMessage = "";  // For displaying feedback to the user.
+    private string feedbackMessage = ""; 
 
     private List<int> ticketOptions = new List<int> { 1 };
     private int maxTickets = 100; 
@@ -171,7 +167,7 @@
         {
             theaters = await ShowsService.GetTheatersForShowNameAsync(selectedShowName);
         }
-        StateHasChanged(); // To refresh the component
+        StateHasChanged(); 
     }
 
 
@@ -180,7 +176,7 @@
         var allAvailableTimes = new List<TimeSpan>();
 
         // // If a specific show is selected or "All Shows"
-        // if (startDate != default(DateTime) && endDate != default(DateTime))
+        // if (startDate != default(DateOnly) && endDate != default(DateOnly))
         // {
             var showList = (selectedShowName == "all") ? shows.Select(s => s.Name).ToList() : new List<string> { selectedShowName };
 
@@ -240,30 +236,27 @@
 
     private async Task UpdateAvailableTickets()
     {
-        if (!string.IsNullOrEmpty(selectedTime) && DateTime.TryParse(selectedTime, out DateTime parsedTime))
+        if (!string.IsNullOrEmpty(selectedTime) && DateOnly.TryParse(selectedTime, out DateOnly parsedTime))
         {
-            var timeSlot = parsedTime.TimeOfDay;
+            var timeSlot = parsedTime.Day;
 
-            // Fetch theaterId based on selectedTheaterName (assuming you have a method for this)
             int? nullableTheaterId = await TheaterService.GetTheaterIdByName(selectedTheaterName);
 
             if (!nullableTheaterId.HasValue)
             {
-                // Handle the case when the theater is not found, maybe log an error or show a message to the user
                 return;
             }
 
             int theaterId = nullableTheaterId.Value;
 
-            // Directly fetch the available tickets for that time slot, theater, and date from the database
             maxTickets = await TicketSalesService.GetAvailableTicketsForTimeSlot(theaterId, startDate, timeSlot);
         }
         else
         {
-            maxTickets = 1; // Default to just 1 ticket if time is not selected
+            maxTickets = 1; 
         }
 
-        StateHasChanged(); // To refresh the component
+        StateHasChanged();
     }
 
 
@@ -271,37 +264,34 @@
 
     private async void BuyTickets()
     {
-        // Check if there are available times
         if (string.IsNullOrEmpty(selectedTime))
         {
             feedbackMessage = "Please select a Time.";
-            return; // Early exit
+            return;
         }
 
-        // Fetch theaterId based on selectedTheaterName
         int? nullableTheaterId = await TheaterService.GetTheaterIdByName(selectedTheaterName);
 
         if (!nullableTheaterId.HasValue)
         {
             feedbackMessage = "Theater not found!";
-            return; // Early exit
+            return; 
         }
 
         int theaterId = nullableTheaterId.Value;
 
-        DateTime? exactDate = await TicketSalesService.GetExactDateForSelectedTime(theaterId, TimeSpan.Parse(selectedTime), ticketCount);
+        DateOnly? exactDate = await TicketSalesService.GetExactDateForSelectedTime(theaterId, TimeSpan.Parse(selectedTime), ticketCount);
 
         if (!exactDate.HasValue)
         {
             feedbackMessage = "Sorry, we couldn't find a date that matches your criteria.";
-            return; // Early exit
+            return; 
         }
 
 
-        // If all checks passed, give the success message.
-        feedbackMessage = "";  // Clear previous messages
+        feedbackMessage = "";  
 
-        if (string.IsNullOrEmpty(feedbackMessage))  // If there was no error message set
+        if (string.IsNullOrEmpty(feedbackMessage))  
         {
             ticketPurchaseData = new TicketPurchaseData
                 {
@@ -312,14 +302,13 @@
                     NumberOfTickets = ticketCount
                 };
 
-            // Now navigate to ProcessPayment page
             TicketDataService.CurrentPurchaseData = ticketPurchaseData;
             NavigationManager.NavigateTo("/ProcessPayment");
 
         }
         else
         {
-            StateHasChanged();  // This will trigger a re-render to show the error message
+            StateHasChanged();  
         }
     }
 
@@ -327,3 +316,4 @@
 
 
 }
+ *@

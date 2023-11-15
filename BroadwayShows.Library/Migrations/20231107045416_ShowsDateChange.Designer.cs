@@ -3,6 +3,7 @@ using System;
 using BroadwayShows.Library.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BroadwayShows.Library.Migrations
 {
     [DbContext(typeof(BroadwayShowsContext))]
-    partial class BroadwayShowsContextModelSnapshot : ModelSnapshot
+    [Migration("20231107045416_ShowsDateChange")]
+    partial class ShowsDateChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,8 +125,8 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("NumberOfTickets")
                         .HasColumnType("int");

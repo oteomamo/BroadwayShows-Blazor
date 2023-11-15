@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BroadwayShows.Library.Migrations
 {
     [DbContext(typeof(BroadwayShowsContext))]
-    [Migration("20231103030218_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231107034412_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,9 +42,8 @@ namespace BroadwayShows.Library.Migrations
                     b.Property<int>("TheaterId")
                         .HasColumnType("int");
 
-                    b.Property<string>("WorkingPosition")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("WorkingPositionID")
+                        .HasColumnType("int");
 
                     b.HasKey("SSN");
 
@@ -52,7 +51,24 @@ namespace BroadwayShows.Library.Migrations
 
                     b.HasIndex("TheaterId");
 
+                    b.HasIndex("WorkingPositionID");
+
                     b.ToTable("CastCrews");
+                });
+
+            modelBuilder.Entity("BroadwayShows.Library.Models.Genre", b =>
+                {
+                    b.Property<int>("GenreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("GenreId");
+
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("BroadwayShows.Library.Models.Shows", b =>
@@ -61,12 +77,10 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
@@ -77,6 +91,8 @@ namespace BroadwayShows.Library.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("ShowId");
+
+                    b.HasIndex("GenreId");
 
                     b.ToTable("Shows");
                 });
@@ -131,6 +147,21 @@ namespace BroadwayShows.Library.Migrations
                     b.ToTable("TicketSales");
                 });
 
+            modelBuilder.Entity("BroadwayShows.Library.Models.WorkingPosition", b =>
+                {
+                    b.Property<int>("WorkingPositionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("WorkingPositionID");
+
+                    b.ToTable("WorkingPositions");
+                });
+
             modelBuilder.Entity("BroadwayShows.Library.Models.CastCrew", b =>
                 {
                     b.HasOne("BroadwayShows.Library.Models.Shows", "Show")
@@ -145,9 +176,28 @@ namespace BroadwayShows.Library.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BroadwayShows.Library.Models.WorkingPosition", "WorkingPosition")
+                        .WithMany("CastCrews")
+                        .HasForeignKey("WorkingPositionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Show");
 
                     b.Navigation("Theater");
+
+                    b.Navigation("WorkingPosition");
+                });
+
+            modelBuilder.Entity("BroadwayShows.Library.Models.Shows", b =>
+                {
+                    b.HasOne("BroadwayShows.Library.Models.Genre", "Genre")
+                        .WithMany("Shows")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
                 });
 
             modelBuilder.Entity("BroadwayShows.Library.Models.TicketSales", b =>
@@ -161,6 +211,11 @@ namespace BroadwayShows.Library.Migrations
                     b.Navigation("Theater");
                 });
 
+            modelBuilder.Entity("BroadwayShows.Library.Models.Genre", b =>
+                {
+                    b.Navigation("Shows");
+                });
+
             modelBuilder.Entity("BroadwayShows.Library.Models.Shows", b =>
                 {
                     b.Navigation("CastCrews");
@@ -171,6 +226,11 @@ namespace BroadwayShows.Library.Migrations
                     b.Navigation("CastCrews");
 
                     b.Navigation("TicketSales");
+                });
+
+            modelBuilder.Entity("BroadwayShows.Library.Models.WorkingPosition", b =>
+                {
+                    b.Navigation("CastCrews");
                 });
 #pragma warning restore 612, 618
         }

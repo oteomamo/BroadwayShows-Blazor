@@ -59,9 +59,9 @@ namespace BroadwayShows.Library.Services
             }
         }
 
-        public async Task<List<string>> SearchPositionsAsync(string search)
+/*        public async Task<List<string>> SearchPositionsAsync(string search)
         {
-            if (string.IsNullOrEmpty(search))
+*//*            if (string.IsNullOrEmpty(search))
             {
                 return new List<string>();
             }
@@ -70,8 +70,8 @@ namespace BroadwayShows.Library.Services
                 .Where(cc => cc.WorkingPosition.Contains(search))
                 .Select(cc => cc.WorkingPosition)
                 .Distinct()
-                .ToListAsync();
-        }
+                .ToListAsync();*//*
+        }*/
         private async Task<int> GenerateUniqueSSN()
         {
             var random = new Random();
@@ -84,13 +84,13 @@ namespace BroadwayShows.Library.Services
 
             return uniqueSSN;
         }
-        public async Task<List<string>> GetAllDistinctPositionsAsync()
+/*        public async Task<List<string>> GetAllDistinctPositionsAsync()
         {
             return await _context.CastCrews
                 .Select(cc => cc.WorkingPosition)
                 .Distinct()
                 .ToListAsync();
-        }
+        }*/
         public async Task<List<CastCrew>> SearchCastCrewAsync(string showName, string position, char gender)
         {
             var query = _context.CastCrews.Include(cc => cc.Show).AsQueryable();
@@ -98,8 +98,8 @@ namespace BroadwayShows.Library.Services
             if (!string.IsNullOrEmpty(showName) && showName != "all")
                 query = query.Where(cc => cc.Show.Name == showName);
 
-            if (!string.IsNullOrEmpty(position) && position != "all")
-                query = query.Where(cc => cc.WorkingPosition == position);
+           /* if (!string.IsNullOrEmpty(position) && position != "all")
+                query = query.Where(cc => cc.WorkingPosition == position);*/
 
             if (gender != '\0')
                 query = query.Where(cc => cc.Gender == gender);
@@ -107,7 +107,28 @@ namespace BroadwayShows.Library.Services
             return await query.ToListAsync();
         }
 
+/*        public async Task<List<string>> GetAllCastCrewsPositionAsync()
+        {
+            return await _context.CastCrews.Select(CastCrew => CastCrew.WorkingPosition).Distinct().ToListAsync();
+        }*/
 
+        public async Task<bool> IsShowScheduledAtTheater(int showId, int theaterId)
+        {
+            var castCrewRecord = await _context.CastCrews
+                                                .AnyAsync(cc => cc.ShowId == showId && cc.TheaterId == theaterId);
+            return castCrewRecord;
+        }
+
+        public async Task<List<int>> GetTheatersForShow(int showId)
+        {
+            return await _context.CastCrews
+                .Where(cc => cc.ShowId == showId)
+                .Select(cc => cc.TheaterId)
+                .Distinct()
+                .ToListAsync();
+        }
     }
+
+
 
 }

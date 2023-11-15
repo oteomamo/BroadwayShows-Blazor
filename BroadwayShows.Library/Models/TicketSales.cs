@@ -15,7 +15,7 @@ namespace BroadwayShows.Library.Models
 
         public int TicketNumber { get; set; }
         public TimeSpan Time { get; set; }
-        public DateTime Date { get; set; }
+        public DateOnly Date { get; set; }
         public int NumberOfTickets { get; set; }
         public decimal Price { get; set; }
         public int TheaterId { get; set; }

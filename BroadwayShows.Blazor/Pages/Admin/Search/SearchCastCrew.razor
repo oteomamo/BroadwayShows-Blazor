@@ -111,7 +111,7 @@
     protected override async Task OnInitializedAsync()
     {
         shows = await ShowsService.GetShowNamesAndImagesAsync();
-        positions = await CastCrewService.GetAllDistinctPositionsAsync();
+    //    positions = await CastCrewService.GetAllDistinctPositionsAsync();
     }
 
     private async void LoadData() 

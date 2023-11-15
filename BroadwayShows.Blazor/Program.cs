@@ -2,6 +2,11 @@ using BroadwayShows.Blazor.Pages;
 using BroadwayShows.Library.Data;
 using BroadwayShows.Library.Services;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.Blazor;
+using Syncfusion.Blazor.Calendars;
+using static System.Net.Mime.MediaTypeNames;
+
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +25,11 @@ builder.Services.AddScoped<TheaterService>();
 builder.Services.AddScoped<CastCrewService>();
 builder.Services.AddScoped<TicketSalesService>();
 builder.Services.AddScoped<TicketDataService>();
-
+builder.Services.AddScoped<GenreService>();
+builder.Services.AddScoped<WorkingPositionService>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddSyncfusionBlazor();
+
 
 
 

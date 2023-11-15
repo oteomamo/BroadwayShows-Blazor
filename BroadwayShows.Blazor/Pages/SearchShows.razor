@@ -1,5 +1,5 @@
-﻿@page "/SearchShows/{ShowId:int}"
-
+﻿ @page "/SearchShows/{ShowId:int}"
+ @*
 @using BroadwayShows.Library.Services
 @inject ShowsService ShowsService
 @inject TheaterService TheaterService
@@ -114,7 +114,7 @@ else
         selectedTime = time.ToString("hh\\:mm");
         if (ticketCounts.ContainsKey(time))
         {
-            _ticketCount = ticketCounts[time]; // Set the ticket count for the selected time
+            _ticketCount = ticketCounts[time]; 
         }
         BuyTickets();
     }
@@ -136,7 +136,6 @@ else
         if (showDetails != null)
         {
             show = (showDetails.ShowId, showDetails.Name, showDetails.Image);
-            // Now get theaters for this show
             theaters = await ShowsService.GetTheatersForShowAsync(ShowId);
         }
     }
@@ -240,7 +239,7 @@ else
 
         int theaterId = nullableTheaterId.Value;
 
-        DateTime? exactDate = await TicketSalesService.GetExactDateForSelectedTime(theaterId, TimeSpan.Parse(selectedTime), ticketCount);
+        DateOnly? exactDate = await TicketSalesService.GetExactDateForSelectedTime(theaterId, TimeSpan.Parse(selectedTime), ticketCount);
 
         if (!exactDate.HasValue)
         {
@@ -261,4 +260,4 @@ else
         TicketDataService.CurrentPurchaseData = ticketPurchaseData;
         NavigationManager.NavigateTo("/ProcessPayment");
     }
-}
+}  *@

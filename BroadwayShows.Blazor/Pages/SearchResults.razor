@@ -1,0 +1,447 @@
+﻿@page "/searchresults"
+@using Microsoft.AspNetCore.WebUtilities;
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
+@inject ShowsService ShowsService
+@inject NavigationManager NavigationManager
+@inject GenreService GenreService
+@inject TheaterService TheaterService
+@inject WorkingPositionService WorkingPositionService
+@inject TicketSalesService TicketSalesService
+@inject CastCrewService CastCrewService
+
+
+<h3>Broadway Tickets</h3>
+
+<div style="display: flex; align-items: center; gap: 1rem;">
+    <div>
+        <InputSelect id="showSelect" @bind-Value="selectedShowId" class="form-control">
+            <option value="">All Shows</option>
+            @foreach (var show in showsDropdownData)
+            {
+                <option value="@show.ShowId.ToString()">@show.Name</option>
+            }
+        </InputSelect>
+    </div>
+
+
+
+
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <p>@ticketCountDisplay</p>
+        <button @onclick="DecreaseTicketCount">-</button>
+@*         <input type="text" value="@ticketCount" readonly />
+ *@        <button @onclick="IncreaseTicketCount">+</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <label for="startDate">From:</label>
+        <InputDate id="startDate" @bind-Value="startDate" class="form-control" />
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <label for="endDate">Till:</label>
+        <InputDate id="endDate" @bind-Value="endDate" class="form-control" />
+    </div>
+
+</div>
+
+<div>
+    <p>Show Name: @selectedShowName</p>
+    <p>Start Date: @startDate?.ToString("yyyy-MM-dd")</p>
+    <p>End Date: @endDate?.ToString("yyyy-MM-dd")</p>
+    <p>Number of Tickets: @(ticketCount > 0 ? ticketCount.ToString() + " Tickets" : "Select number of tickets")</p>
+</div>
+
+
+
+<div style="padding-top: 40px;" class="row">
+    @if (!selectedShowId.HasValue || selectedShowId.Value == 0)
+    {
+        <div style="padding-top: 40px;" class="col-md-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle col-md-12" type="button" id="genreDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Genres
+                </button>
+                <ul class="dropdown-menu col-md-12" aria-labelledby="genreDropdownMenuButton">
+                    @foreach (var genreViewModel in genreViewModels)
+                    {
+                        <li>
+                            <div class="form-check dropdown-item">
+                                <InputCheckbox class="form-check-input" id="@($"genre-{genreViewModel.GenreId}")" @bind-Value="genreViewModel.IsChecked" />
+                                <label class="form-check-label" for="@($"genre-{genreViewModel.GenreId}")">@genreViewModel.Name</label>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="d-grid gap-2 mt-2">
+                <button class="btn btn-primary" @onclick="ResetGenreSelection">Reset</button>
+            </div>
+        </div>
+    }
+
+
+    <div class="price-slider col-md-3">
+        <label for="priceRange" class="price-slider-label mb-3">Tickets under @selectedMaxPrice.ToString("C")/ea</label>
+        <input type="range" id="priceRange" min="@minPrice" max="@maxPrice" @bind="selectedMaxPrice" class="form-control price-slider-range mb-3" />
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" @onclick="ResetPrice">Reset</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* 
+@if (showsDropdownData == null || !showPrices.Any() || !showTimes.Any())
+{
+    <p>Loading show data...</p>
+}
+else
+{
+    <!-- Display show cards -->
+    <div class="show-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 20px;">
+        @foreach (var show in showsDropdownData)
+        {
+            <div class="buy-show-card" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+                <!-- Container for Image and Name/Price -->
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <!-- Image -->
+                    <div style="flex-shrink: 0;">
+                        <img src="@GetImagePath(show.Image)" alt="@show.Name" style="width: 150px; height: 150px; object-fit: cover;" />
+                    </div>
+                    <!-- Name and Price -->
+                    <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <p style="margin: 0;"><strong>@show.Name</strong></p>
+                        <p style="margin: 0;">Price: @(showPrices.ContainsKey(show.ShowId) ? showPrices[show.ShowId].ToString("C") : "N/A")</p>
+                    </div>
+                </div>
+                <!-- Times at the bottom -->
+                <div style="margin-top: 10px;">
+                    @if (showTimes.ContainsKey(show.ShowId))
+                    {
+                        <ul style="padding-left: 0; list-style: none;">
+                            @foreach (var time in showTimes[show.ShowId])
+                            {
+                                <li>@FormatTime(time)</li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+} *@
+
+
+@if (selectedShowId.HasValue && selectedShowId.Value > 0)
+{
+    // Display the details for the selected show only
+    var selectedShowData = showsDropdownData.FirstOrDefault(show => show.ShowId == selectedShowId.Value);
+    if (selectedShowData != null)
+    {
+        RenderShowCard(selectedShowData);
+    }
+}
+else
+{
+    // Display all shows
+    foreach (var show in showsDropdownData)
+    {
+        RenderShowCard(show);
+    }
+}
+
+
+
+
+@code {
+    private List<Shows> showsDropdownData = new List<Shows>();
+    private string selectedShowName;
+    //private int? selectedShowId;
+    private DateOnly? startDate;
+    private DateOnly? endDate;
+    private int ticketCount;
+    private string ticketCountDisplay => ticketCount > 0 ? $"{ticketCount} Tickets" : "Select number of tickets";
+
+    private List<(int Id, string Name, string Image)> show;
+    private List<Shows> shows;
+    private List<Genre> genres = new List<Genre>();
+    private decimal minPrice;
+    private decimal maxPrice;
+    private decimal selectedMinPrice;
+    private decimal selectedMaxPrice;
+    private int? selectedGenreId;
+
+    private Dictionary<int, decimal> showPrices = new Dictionary<int, decimal>();
+    private Dictionary<int, List<TimeSpan>> showTimes = new Dictionary<int, List<TimeSpan>>();
+
+    private string FormatTime(TimeSpan time)
+    {
+        DateTime timeAsDateTime = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day) + time;
+        return timeAsDateTime.ToString("hh:mm tt");
+    }
+
+    private int? selectedShowId
+    {
+        get => _selectedShowId;
+        set
+        {
+            if (_selectedShowId != value)
+            {
+                _selectedShowId = value;
+                UpdateShowName();
+            }
+        }
+    }
+    private int? _selectedShowId;
+
+    private void UpdateShowName()
+    {
+        if (selectedShowId.HasValue)
+        {
+            selectedShowName = showsDropdownData.FirstOrDefault(s => s.ShowId == selectedShowId.Value)?.Name;
+        }
+        else
+        {
+            selectedShowName = "All Shows";
+        }
+    }
+
+    private List<GenreViewModel> genreViewModels = new List<GenreViewModel>();
+    private class GenreViewModel
+    {
+        public int GenreId { get; set; }
+        public string Name { get; set; }
+        public bool IsChecked { get; set; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        showsDropdownData = await ShowsService.GetAllShowsAsync();
+
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        var queryParams = QueryHelpers.ParseQuery(uri.Query);
+
+        var genres = await GenreService.GetAllGenresAsync();
+        genreViewModels = genres.Select(g => new GenreViewModel
+            {
+                GenreId = g.GenreId,
+                Name = g.Name,
+                IsChecked = true
+            }).ToList();
+
+
+        var ticketSales = await TicketSalesService.GetAllTicketSaleAsync();
+
+        minPrice = ticketSales.Min(ts => ts.Price);
+        maxPrice = ticketSales.Max(ts => ts.Price);
+
+        selectedMaxPrice = maxPrice;
+
+        if (queryParams.TryGetValue("showId", out var showIdValue) && showIdValue != "")
+        {
+            if (int.TryParse(showIdValue, out var showId))
+            {
+                selectedShowId = showId;
+                selectedShowName = showsDropdownData.FirstOrDefault(s => s.ShowId == showId)?.Name;
+            }
+        }
+        else
+        {
+            // Handle the case where no specific show is selected or "All Shows" is intended
+            selectedShowId = null; // or use an appropriate value that indicates "All Shows"
+            selectedShowName = "All Shows";
+        }
+
+        if (queryParams.TryGetValue("startDate", out var start) && DateOnly.TryParse(start, out var startDateValue))
+        {
+            startDate = startDateValue;
+        }
+
+        if (queryParams.TryGetValue("endDate", out var end) && DateOnly.TryParse(end, out var endDateValue))
+        {
+            endDate = endDateValue;
+        }
+
+        if (queryParams.TryGetValue("ticketCount", out var tickets) && int.TryParse(tickets, out var ticketCountValue))
+        {
+            ticketCount = ticketCountValue;
+        }
+
+        await LoadShowDataAsync();
+
+    }
+    private async Task LoadShowDataAsync()
+    {
+        showsDropdownData = await ShowsService.GetAllShowsAsync();
+        foreach (var show in showsDropdownData)
+        {
+            var theaterIds = await CastCrewService.GetTheatersForShow(show.ShowId);
+            foreach (var theaterId in theaterIds)
+            {
+                var times = await TicketSalesService.GetAvailableTimesForTheaterInDateRange(theaterId, startDate.Value, endDate.Value);
+                // Assuming we want to store all times across all theaters for a show
+                if (showTimes.ContainsKey(show.ShowId))
+                {
+                    showTimes[show.ShowId].AddRange(times);
+                }
+                else
+                {
+                    showTimes[show.ShowId] = new List<TimeSpan>(times);
+                }
+            }
+            // If you have multiple theaters for a show and hence multiple prices, decide how to handle that here.
+            // For example, you could choose the lowest, the highest, or the most common price.
+            showPrices[show.ShowId] = await TicketSalesService.GetTicketPriceForShow(theaterIds.FirstOrDefault());
+        }
+        // If you've added times for a show from multiple theaters, ensure you remove duplicates.
+        foreach (var showId in showTimes.Keys.ToList())
+        {
+            showTimes[showId] = showTimes[showId].Distinct().ToList();
+        }
+        StateHasChanged();
+    }
+
+
+    private async Task OnShowSelected(ChangeEventArgs e)
+    {
+        if (e.Value.ToString() == "")
+        {
+            selectedShowId = null;
+            selectedShowName = "All Shows";
+        }
+        else if (int.TryParse(e.Value.ToString(), out var showId))
+        {
+            selectedShowId = showId;
+            // var selectedShow = showsDropdownData.FirstOrDefault(s => s.ShowId == showId);
+            // selectedShowName = selectedShow?.Name;
+            // ResetGenreSelection(); 
+            selectedShowName = showsDropdownData.FirstOrDefault(s => s.ShowId == showId)?.Name;
+
+            await LoadShowDataAsync();
+
+        }
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+
+
+
+    private void OnTicketNumberChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out var count))
+        {
+            ticketCount = count;
+        }
+    }
+
+    private void OnStartDateChanged(ChangeEventArgs e)
+    {
+        if (DateOnly.TryParse(e.Value?.ToString(), out var date))
+        {
+            startDate = date;
+        }
+    }
+
+    private void OnEndDateChanged(ChangeEventArgs e)
+    {
+        if (DateOnly.TryParse(e.Value?.ToString(), out var date))
+        {
+            endDate = date;
+        }
+    }
+
+    private void IncreaseTicketCount()
+    {
+        ticketCount++;
+    }
+
+    private void DecreaseTicketCount()
+    {
+        if (ticketCount > 0) 
+        {
+            ticketCount--;
+        }
+    }
+
+    private void ResetPrice()
+    {
+        selectedMaxPrice = maxPrice;
+    }
+
+    private void ResetGenreSelection()
+    {
+        foreach (var genreViewModel in genreViewModels)
+        {
+            genreViewModel.IsChecked = true;
+        }
+    }
+
+
+    private string GetImagePath(string imageName)
+    {
+        return $"/css/Images/{imageName}";
+    }
+
+    private async Task<decimal> GetTicketPriceForShow(int showId)
+    {
+        // Fetch the ticket price for the given showId, probably the lowest price or an average.
+        // This method needs to be defined in your TicketSalesService or similar service.
+        return await TicketSalesService.GetTicketPriceForShow(showId);
+    }
+
+    private async Task<List<TimeSpan>> GetAvailableTimesForShow(int showId)
+    {
+        var theaterIds = await CastCrewService.GetTheatersForShow(showId);
+        var allAvailableTimes = new List<TimeSpan>();
+        foreach (var theaterId in theaterIds)
+        {
+            var from = startDate ?? DateOnly.MinValue;
+            var till = endDate ?? DateOnly.MaxValue;
+            var times = await TicketSalesService.GetAvailableTimesForTheaterInDateRange(theaterId, from, till);
+            allAvailableTimes.AddRange(times);
+        }
+        return allAvailableTimes.Distinct().ToList();
+    }
+
+
+
+
+
+}
+
+@{
+    void RenderShowCard(Shows show)
+    {
+        <div class="buy-show-card" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+            <!-- Container for Image and Name/Price -->
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <!-- Image -->
+                <div style="flex-shrink: 0;">
+                    <img src="@GetImagePath(show.Image)" alt="@show.Name" style="width: 150px; height: 150px; object-fit: cover;" />
+                </div>
+                <!-- Name and Price -->
+                <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <p><strong>@show.Name</strong></p>
+                    <p>Price: @(showPrices.ContainsKey(show.ShowId) ? showPrices[show.ShowId].ToString("C") : "N/A")</p>
+                </div>
+            </div>
+            <!-- Times at the bottom -->
+            <div style="margin-top: 10px;">
+                @if (showTimes.ContainsKey(show.ShowId))
+                {
+                    <ul style="padding-left: 0; list-style: none;">
+                        @foreach (var time in showTimes[show.ShowId])
+                        {
+                            <li>@FormatTime(time)</li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    }
+}

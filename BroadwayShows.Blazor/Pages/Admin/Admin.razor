@@ -1,13 +1,911 @@
 ﻿@page "/Admin/admin"
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Buttons
+@inject ShowsService ShowsService
+@inject NavigationManager NavigationManager
+@inject GenreService GenreService
+@inject TheaterService TheaterService
+@inject WorkingPositionService WorkingPositionService
+@inject TicketSalesService TicketSalesService
+@inject CastCrewService CastCrewService
 
-<h3>Admin</h3>
+<div class="container mt-5">
+    <div class="row">
 
-<div>
-    <NavLink class="btn btn-primary" href="AddAttributes">Add Attributes</NavLink>
-    <NavLink class="btn btn-primary" href="RemoveAttributes">Remove Attributes</NavLink>
-    <NavLink class="btn btn-primary" href="UpdateAttributes">Update Attributes</NavLink>
-    <NavLink class="btn btn-primary" href="SearchAttributes">Search Attributes</NavLink>
+
+        <!-- Column for Switches (25% width) -->
+        <div class="col-md-3">
+            <div class="mb-3">
+                <SfSwitch @bind-Checked="isChecked" id="showsTableSwitch"></SfSwitch>
+                <label for="showsTableSwitch">Shows Table</label>
+            </div>
+            <div class="mb-3">
+                <SfSwitch @bind-Checked="isChecked2" id="genresTableSwitch"></SfSwitch>
+                <label for="genresTableSwitch">Genres Table</label>
+            </div>
+            <div class="mb-3">
+                <SfSwitch @bind-Checked="isChecked3" id="theatersTableSwitch"></SfSwitch>
+                <label for="theatersTableSwitch">Theaters Table</label>
+
+            </div>
+            <div class="mb-3">
+                <SfSwitch @bind-Checked="isChecked4" id="castCrewsTableSwitch"></SfSwitch>
+                <label for="castCrewsTableSwitch">Cast/Crews Table</label>
+
+            </div>
+            <div class="mb-3">
+                <SfSwitch @bind-Checked="isChecked5" id="workingPositionsTableSwitch"></SfSwitch>
+                <label for="workingPositionsTableSwitch">Working Positions Table</label>
+
+            </div>
+            <div class="mb-3">
+                <SfSwitch @bind-Checked="isChecked6" id="ticketSalesTableSwitch"></SfSwitch>
+                <label for="ticketSalesTableSwitch">Ticket Sales Table</label>
+
+            </div>
+        </div>
+
+
+        <!-- Column for Tables (50% width) -->
+        <div class="col-md-7">
+            <div style="overflow-y: auto; max-height: 75vh;">
+                @if (isChecked)
+                {
+                    if (showsList == null)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else
+                    {
+                        <input type="text" @bind="searchTerm" placeholder="Search shows..." class="form-control mb-3" />
+
+                        <div style="height: 40%; overflow-y: scroll;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Show ID</th>
+                                        <th>Name</th>
+                                        <th>Release Date</th>
+                                        <th>Image</th>
+                                        <th>Genre ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var show in showsList.Where(show => show.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+                                    {
+                                        <tr>
+                                            <td>@show.ShowId</td>
+                                            <td>@show.Name</td>
+                                            <td>@show.ReleaseDate.ToString("yyyy-MM-dd")</td>
+                                            <td><img src="../css/Images/@show.Image" alt="@show.Name" style="width:30px; height:auto; cursor: pointer;" /></td>
+                                            <td >@GetGenreName(show.GenreId)</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" @onclick="() => OpenEditShowModal(show)">Edit</button>
+                                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteShow(show.ShowId)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+                @if (isChecked2)
+                {
+                    if (genresList == null)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else
+                    {
+                        <div style="height: 40%; overflow-y: scroll;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Genre ID</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var genre in genresList)
+                                    {
+                                        <tr>
+                                            <td>@genre.GenreId</td>
+                                            <td>@genre.Name</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" @onclick="() => OpenEditGenreModal(genre)">Edit</button>
+
+                                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteGenres(genre.GenreId)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+                @if (isChecked3)
+                {
+                    if (theatersList == null)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else
+                    {
+                        <div style="height: 40%; overflow-y: scroll;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Theater ID</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Number Of Seats</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var theater in theatersList)
+                                    {
+                                        <tr>
+                                            <td>@theater.TheaterId</td>
+                                            <td>@theater.Name</td>
+                                            <td>@theater.Address</td>
+                                            <td>@theater.NumberOfSeats</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" @onclick="() => OpenEditTheaterModal(theater)">Edit</button>
+
+                                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteTheaters(theater.TheaterId)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+                @if (isChecked4)
+                {
+                    if (castCrewsList == null)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else
+                    {
+                        <div style="overflow-y: auto; max-height: 50vh;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>SSN</th>
+                                        <th>Name</th>
+                                        <th>Working Position ID</th>
+                                        <th>Gender</th>
+                                        <th>Show ID</th>
+                                        <th>Theater ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var castCrew in castCrewsList)
+                                    {
+                                        <tr>
+                                            <td>@castCrew.SSN</td>
+                                            <td>@castCrew.Name</td>
+                                            <td>@castCrew.WorkingPositionID</td>
+                                            <td>@castCrew.Gender</td>
+                                            <td>@castCrew.ShowId</td>
+                                            <td>@castCrew.TheaterId</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" @onclick="() => OpenEditCastCrewModal(castCrew)">Edit</button>
+                                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteCastCrews(castCrew.SSN)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+                @if (isChecked5)
+                {
+                    if (workingPositionsList == null)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else
+                    {
+                        <div style="overflow-y: auto; max-height: 50vh;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Working Position ID</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var position in workingPositionsList)
+                                    {
+                                        <tr>
+                                            <td>@position.WorkingPositionID</td>
+                                            <td>@position.Name</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" @onclick="() => OpenEditWorkingPositionModal(position)">Edit</button>
+                                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteWorkingPosition(position.WorkingPositionID)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+                @if (isChecked6)
+                {
+                    if (ticketSalesList == null)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else
+                    {
+                        <div style="overflow-y: auto; max-height: 50vh;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket Number</th>
+                                        <th>Time</th>
+                                        <th>Date</th>
+                                        <th>Number Of Tickets</th>
+                                        <th>Price</th>
+                                        <th>Theater ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var ticket in ticketSalesList)
+                                    {
+                                        <tr>
+                                            <td>@ticket.TicketNumber</td>
+                                            <td>@ticket.Time.ToString(@"hh\:mm\:ss")</td>
+                                            <td>@ticket.Date.ToString("yyyy-MM-dd")</td>
+                                            <td>@ticket.NumberOfTickets</td>
+                                            <td>@ticket.Price</td>
+                                            <td>@ticket.TheaterId</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" @onclick="() => OpenEditTicketSalesModal(ticket)">Edit</button>
+                                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteTicketSales(ticket.TicketNumber)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+
+
+        <!-- Column for Add Entities Buttons (25% width) -->
+
+
+        <div class="col-md-2">
+            <h4 class="text-center">Add Entities</h4>
+            <button class="btn btn-primary w-100 mt-2" @onclick="NavigateToAddShows">Add Shows</button>
+            <button class="btn btn-primary w-100 mt-2" @onclick="NavigateToAddGenres">Add Genres</button>
+            <button class="btn btn-primary w-100 mt-2" @onclick="NavigateToAddTheater">Add Theater</button>
+            <button class="btn btn-primary w-100 mt-2" @onclick="NavigateToAddCastCrews">Add Cast/Crew</button>
+            <button class="btn btn-primary w-100 mt-2" @onclick="NavigateToAddWorkingPosition">Add WorkingPositions</button>
+            <button class="btn btn-primary w-100 mt-2" @onclick="NavigateToAddTicketSales">Add Ticket Sales</button>
+        </div>
+
+
+    </div>
 </div>
 
+<!-- Shows Modal -->
+<div class="modal" tabindex="-1" role="dialog" style="display:@(ShowModal ? "block" : "none")">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Show</h5>
+                <button type="button" class="close" @onclick="() => ShowModal = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@newShow" OnValidSubmit="@HandleValidSubmit">
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <InputText id="Name" class="form-control" @bind-Value="newShow.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ReleaseDate">Release Date</label>
+                        <InputDate id="ReleaseDate" class="form-control" @bind-Value="releaseDateBindable" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Image">Image URL</label>
+                        <InputText id="Image" class="form-control" @bind-Value="newShow.Image" />
+                    </div>
+                    <div class="form-group">
+                        <label for="GenreId">Genre</label>
+                        <select @bind="newShow.GenreId" class="form-control">
+                            <option value="">-- Select Genre --</option>
+                            @foreach (var genre in genresList)
+                            {
+                                <option value="@genre.GenreId">@genre.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Genre Modal -->
+
+<div class="modal" tabindex="-1" role="dialog" style="display:@(ShowGenreModal ? "block" : "none")">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Genre</h5>
+                <button type="button" class="close" @onclick="() => ShowGenreModal = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@newGenre" OnValidSubmit="@HandleGenreValidSubmit">
+                    <div class="form-group">
+                        <label for="GenreName">Genre Name</label>
+                        <InputText id="GenreName" class="form-control" @bind-Value="newGenre.Name" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Theater Modal -->
+<div class="modal" tabindex="-1" role="dialog" style="display:@(ShowTheaterModal ? "block" : "none")">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Theater</h5>
+                <button type="button" class="close" @onclick="() => ShowTheaterModal = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@newTheater" OnValidSubmit="@HandleTheaterValidSubmit">
+                    <div class="form-group">
+                        <label for="TheaterName">Theater Name</label>
+                        <InputText id="TheaterName" class="form-control" @bind-Value="newTheater.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <InputText id="Address" class="form-control" @bind-Value="newTheater.Address" />
+                    </div>
+                    <div class="row mb-3">
+
+                        <div class="form-group">
+                            <label for="NumberOfSeats">Number of Seats</label>
+                            <InputNumber id="NumberOfSeats" class="form-control" @bind-Value="newTheater.NumberOfSeats" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cast/Crew Modal -->
+<div class="modal" tabindex="-1" role="dialog" style="display:@(ShowCastCrewModal ? "block" : "none")">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Cast/Crew Member</h5>
+                <button type="button" class="close" @onclick="() => ShowCastCrewModal = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@newCastCrew" OnValidSubmit="@HandleCastCrewValidSubmit">
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <InputText id="Name" class="form-control" @bind-Value="newCastCrew.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ShowId">Show</label>
+                        <InputSelect @bind-Value="newCastCrew.ShowId" class="form-control">
+                            <option value="">-- Select Show --</option>
+                            @foreach (var show in showsDropdownData)
+                            {
+                                <option value="@show.ShowId">@show.Name</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="form-group">
+                        <label for="TheaterId">Theater</label>
+                        <InputSelect @bind-Value="newCastCrew.TheaterId" class="form-control">
+                            <option value="">-- Select Theater --</option>
+                            @foreach (var theater in theatersDropdownData)
+                            {
+                                <option value="@theater.TheaterId">@theater.Name</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="form-group">
+                        <label for="WorkingPositionID">Working Position</label>
+                        <InputSelect @bind-Value="newCastCrew.WorkingPositionID" class="form-control">
+                            <option value="">-- Select Working Position --</option>
+                            @foreach (var position in workingPositionsDropdownData)
+                            {
+                                <option value="@position.WorkingPositionID">@position.Name</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="form-group">
+                        <label for="Gender">Gender</label>
+                        <InputSelect @bind-Value="newCastCrew.Gender" class="form-control">
+                            <option value="">-- Select Gender --</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </InputSelect>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- WorkingPosition Modal -->
+
+<div class="modal" tabindex="-1" role="dialog" style="display:@(ShowWorkingPositionModal ? "block" : "none")">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New WorkingPosition</h5>
+                <button type="button" class="close" @onclick="() => ShowWorkingPositionModal = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@newWorkingPosition" OnValidSubmit="@HandleWorkingPositionValidSubmit">
+                    <div class="form-group">
+                        <label for="WorkingPositionName">WorkingPosition Name</label>
+                        <InputText id="WorkingPositionName" class="form-control" @bind-Value="newWorkingPosition.Name" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- TicketSales Modal -->
+<div class="modal" tabindex="-1" role="dialog" style="display:@(ShowTicketSalesModal ? "block" : "none")">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Ticket Sale</h5>
+                <button type="button" class="close" @onclick="() => ShowTicketSalesModal = false">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="@newTicketSale" OnValidSubmit="@HandleTicketSalesValidSubmit">
+                    <div class="form-group">
+                        <label for="Time">Time</label>
+                        <InputText id="Time" class="form-control" @bind-Value="timeBindable" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Date">Date</label>
+                        <InputDate id="Date" class="form-control" @bind-Value="dateBindable" />
+                    </div>
+                    <div class="form-group">
+                        <label for="NumberOfTickets">Number Of Tickets</label>
+                        <InputNumber id="NumberOfTickets" class="form-control" @bind-Value="newTicketSale.NumberOfTickets" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Price">Price</label>
+                        <InputNumber id="Price" class="form-control" @bind-Value="newTicketSale.Price" />
+                    </div>
+                    <div class="form-group">
+                        <label for="TheaterId">Theater</label>
+                        <InputSelect @bind-Value="newTicketSale.TheaterId" class="form-control">
+                            <option value="">-- Select Theater --</option>
+                            @foreach (var theater in theatersDropdownData)
+                            {
+                                <option value="@theater.TheaterId">@theater.Name</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 @code {
+    private bool isChecked = false;
+    private bool isChecked2 = false;
+    private bool isChecked3 = false;
+    private bool isChecked4 = false;
+    private bool isChecked5 = false;
+    private bool isChecked6 = false;
+    private bool isChecked7 = false;
+
+
+
+
+    private Shows newShow = new Shows { ReleaseDate = DateOnly.FromDateTime(DateTime.Now) };
+    private bool ShowModal { get; set; } = false;
+    private List<Shows> showsList;
+    private List<Theater> theatersList = new List<Theater>();
+    private List<Genre> genresList = new List<Genre>();
+    private List<CastCrew> castCrewsList = new List<CastCrew>();
+    private string searchTerm = "";
+
+    private Dictionary<int, string> genreNames = new Dictionary<int, string>();
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        showsList = await ShowsService.GetAllShowsAsync();
+
+        genresList = await GenreService.GetAllGenresAsync();
+        ticketSalesList = await TicketSalesService.GetAllTicketSaleAsync();
+        theatersList = await TheaterService.GetAllTheatersAsync();
+
+        castCrewsList = await CastCrewService.GetAllCastCrewsAsync();
+        workingPositionsList = await WorkingPositionService.GetAllWorkingPositionsAsync();
+
+        showsDropdownData = await ShowsService.GetAllShowsAsync();
+        theatersDropdownData = await TheaterService.GetAllTheatersAsync();
+        workingPositionsDropdownData = await WorkingPositionService.GetAllWorkingPositionsAsync();
+
+        var genres = await GenreService.GetAllGenresAsync();
+        genreNames = genres.ToDictionary(g => g.GenreId, g => g.Name);
+    }
+    private DateTime releaseDateBindable
+    {
+        get => newShow.ReleaseDate.ToDateTime(TimeOnly.MinValue);
+        set => newShow.ReleaseDate = DateOnly.FromDateTime(value);
+    }
+
+
+    private async Task NavigateToAddShows()
+    {
+        genresList = await GenreService.GetAllGenresAsync();
+        newShow = new Shows { ReleaseDate = DateOnly.FromDateTime(DateTime.Now) };
+        ShowModal = true;
+        StateHasChanged();
+    }
+
+
+    private async Task HandleValidSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(newShow.GenreId.ToString()))
+        {
+            return;
+        }
+        if (newShow.ShowId == 0)
+        {
+            await ShowsService.CreateShowAsync(newShow);
+        }
+        else
+        {
+            await ShowsService.UpdateShowAsync(newShow);
+        }
+
+        //await ShowsService.CreateShowAsync(newShow);
+        showsList = await ShowsService.GetAllShowsAsync();
+        ShowModal = false;
+    }
+
+    <!-- Genre Modal -->
+    private Genre newGenre = new Genre();
+    private bool ShowGenreModal { get; set; } = false;
+
+
+    private void NavigateToAddGenres()
+    {
+        newGenre = new Genre();
+        ShowGenreModal = true;
+        StateHasChanged();
+    }
+
+    private async Task HandleGenreValidSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(newGenre.Name))
+        {
+
+            return;
+        }
+        if (newGenre.GenreId == 0)
+        {
+            await GenreService.CreateGenreAsync(newGenre);
+
+        }
+        else
+        {
+            await GenreService.UpdateGenresAsync(newGenre);
+        }
+
+        genresList = await GenreService.GetAllGenresAsync();
+        ShowGenreModal = false;
+    }
+    <!-- Theater Modal -->
+    private Theater newTheater = new Theater();
+    private bool ShowTheaterModal { get; set; } = false;
+
+    private void NavigateToAddTheater()
+    {
+        newTheater = new Theater();
+        ShowTheaterModal = true;
+        StateHasChanged();
+    }
+
+    private async Task HandleTheaterValidSubmit()
+    {
+        if (!IsTheaterFormValid())
+        {
+            return;
+        }
+        if (newTheater.TheaterId == 0)
+        {
+            await TheaterService.CreateTheaterAsync(newTheater);
+
+        }
+        else
+        {
+            await TheaterService.UpdateTheatersAsync(newTheater);
+        }
+        //await TheaterService.CreateTheaterAsync(newTheater);
+        newTheater = new Theater();
+        ShowTheaterModal = false;
+    }
+
+    private bool IsTheaterFormValid()
+    {
+        return !string.IsNullOrWhiteSpace(newTheater.Name) &&
+               !string.IsNullOrWhiteSpace(newTheater.Address) &&
+               newTheater.NumberOfSeats > 0;
+    }
+
+    <!-- Cast/Crew Modal -->
+    private List<Shows> showsDropdownData = new List<Shows>();
+    private List<Theater> theatersDropdownData = new List<Theater>();
+    private List<WorkingPosition> workingPositionsDropdownData = new List<WorkingPosition>();
+    private CastCrew newCastCrew = new CastCrew();
+    private bool ShowCastCrewModal { get; set; } = false;
+
+
+    private async Task HandleCastCrewValidSubmit()
+    {
+        if (!IsCastCrewFormValid())
+        {
+            return;
+        }
+        if (newCastCrew.SSN == 0)
+        {
+            await CastCrewService.CreateCastCrewAsync(newCastCrew);
+
+        }
+        else
+        {
+            await CastCrewService.UpdateCastCrewAsync(newCastCrew);
+
+        }
+
+        newCastCrew = new CastCrew();
+        ShowCastCrewModal = false;
+    }
+
+    private bool IsCastCrewFormValid()
+    {
+        return !string.IsNullOrWhiteSpace(newCastCrew.Name) &&
+               newCastCrew.WorkingPositionID != 0 &&
+               newCastCrew.ShowId != 0 &&
+               newCastCrew.TheaterId != 0;
+    }
+    private void NavigateToAddCastCrews()
+    {
+        newCastCrew = new CastCrew();
+        ShowCastCrewModal = true;
+        StateHasChanged();
+    }
+
+
+    <!-- Working Position Modal -->
+    private List<WorkingPosition> workingPositionsList = new List<WorkingPosition>();
+
+    private WorkingPosition newWorkingPosition = new WorkingPosition();
+    private bool ShowWorkingPositionModal { get; set; } = false;
+
+
+    private void NavigateToAddWorkingPosition()
+    {
+        newWorkingPosition = new WorkingPosition();
+        ShowWorkingPositionModal = true;
+        StateHasChanged();
+    }
+
+    private async Task HandleWorkingPositionValidSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(newWorkingPosition.Name))
+        {
+
+            return;
+        }
+        if (newWorkingPosition.WorkingPositionID == 0)
+        {
+            await WorkingPositionService.CreateWorkingPositionAsync(newWorkingPosition);
+
+        }
+        else
+        {
+            await WorkingPositionService.UpdateWorkingPositionsAsync(newWorkingPosition);
+
+        }
+
+        workingPositionsList = await WorkingPositionService.GetAllWorkingPositionsAsync();
+        ShowWorkingPositionModal = false;
+    }
+
+    <!-- TicketSales Modal -->
+    private bool isTicketSalesChecked = true;
+    private List<TicketSales> ticketSalesList;
+    private TicketSales newTicketSale = new TicketSales { Date = DateOnly.FromDateTime(DateTime.Now), Time = TimeSpan.Zero };
+    private bool ShowTicketSalesModal { get; set; } = false;
+
+    private DateTime dateBindable
+    {
+        get => newTicketSale.Date.ToDateTime(TimeOnly.MinValue);
+        set => newTicketSale.Date = DateOnly.FromDateTime(value);
+    }
+
+    private void NavigateToAddTicketSales()
+    {
+        newTicketSale = new TicketSales { Date = DateOnly.FromDateTime(DateTime.Now), Time = TimeSpan.Zero };
+        ShowTicketSalesModal = true;
+        StateHasChanged();
+    }
+
+    private async Task HandleTicketSalesValidSubmit()
+    {
+        if (!IsTicketSalesFormValid())
+        {
+            return;
+        }
+        if (newTicketSale.TicketNumber == 0)
+        {
+            await TicketSalesService.CreateTicketSaleAsync(newTicketSale);
+
+        }
+        else
+        {
+            await TicketSalesService.UpdateTicketSaleAsync(newTicketSale);
+
+        }
+
+        ticketSalesList = await TicketSalesService.GetAllTicketSaleAsync(); // Refresh the list
+        ShowTicketSalesModal = false; // Close the modal
+    }
+
+    private bool IsTicketSalesFormValid()
+    {
+        return newTicketSale.NumberOfTickets > 0 && newTicketSale.Price > 0 && newTicketSale.TheaterId != 0;
+    }
+
+    private string timeBindable
+    {
+        get => newTicketSale.Time.ToString(@"hh\:mm\:ss");
+        set
+        {
+            if (TimeSpan.TryParse(value, out TimeSpan time))
+            {
+                newTicketSale.Time = time;
+            }
+            else
+            {
+            }
+        }
+    }
+
+
+
+    <!-- Delete Functions-->
+    private async Task DeleteShow(int showId)
+    {
+        await ShowsService.DeleteShowAsync(showId);
+        showsList = await ShowsService.GetAllShowsAsync();
+        StateHasChanged();
+    }
+
+    private async Task DeleteGenres(int genreId)
+    {
+        await GenreService.DeleteGenresAsync(genreId);
+        genresList = await GenreService.GetAllGenresAsync();
+        StateHasChanged();
+    }
+
+    private async Task DeleteTheaters(int theaterId)
+    {
+        await TheaterService.DeleteShowAsync(theaterId);
+        theatersList = await TheaterService.GetAllTheatersAsync();
+        StateHasChanged();
+    }
+
+    private async Task DeleteCastCrews(int castCrewsId)
+    {
+        await CastCrewService.DeleteCastCrewAsync(castCrewsId);
+        castCrewsList = await CastCrewService.GetAllCastCrewsAsync();
+        StateHasChanged();
+    }
+
+    private async Task DeleteTicketSales(int ticketSalesId)
+    {
+        await TicketSalesService.DeleteTicketSaleAsync(ticketSalesId);
+        ticketSalesList = await TicketSalesService.GetAllTicketSaleAsync();
+        StateHasChanged();
+    }
+
+    private async Task DeleteWorkingPosition(int postionId)
+    {
+        await WorkingPositionService.DeleteShowAsync(postionId);
+        workingPositionsList = await WorkingPositionService.GetAllWorkingPositionsAsync();
+        StateHasChanged();
+    }
+
+    <!-- Edit Functions -->
+    private async Task OpenEditShowModal(Shows x)
+    {
+        newShow = x;
+        ShowModal = true;
+    }
+    private async Task OpenEditGenreModal(Genre x)
+    {
+        newGenre = x;
+        ShowGenreModal = true;
+    }
+    private async Task OpenEditTheaterModal(Theater x)
+    {
+        newTheater = x;
+        ShowTheaterModal = true;
+    }
+    private async Task OpenEditTicketSalesModal(TicketSales x)
+    {
+        newTicketSale = x;
+        ShowTicketSalesModal = true;
+    }
+    private async Task OpenEditWorkingPositionModal(WorkingPosition x)
+    {
+        newWorkingPosition = x;
+        ShowWorkingPositionModal = true;
+    }
+    private async Task OpenEditCastCrewModal(CastCrew x)
+    {
+        newCastCrew = x;
+        ShowCastCrewModal = true;
+    }
+
+
+    <!-- Hovering Over -->
+    private string GetGenreName(int genreId)
+    {
+        return genreNames.TryGetValue(genreId, out var name) ? name : "Unknown";
+    }
 }

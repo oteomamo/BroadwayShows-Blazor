@@ -15,9 +15,10 @@ namespace BroadwayShows.Library.Models
 
         public int ShowId { get; set; }
         public string Name { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public string Genre { get; set; }
+        public DateOnly ReleaseDate { get; set; }
         public string? Image {  get; set; }
+        public int GenreId { get; set; }
+        public Genre Genre { get; set; }
         public ICollection<CastCrew> CastCrews { get; set; }
     }
 

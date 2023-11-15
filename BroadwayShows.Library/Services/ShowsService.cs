@@ -27,8 +27,6 @@ namespace BroadwayShows.Library.Services
             _context = context;
         }
 
-        // Create
-        // Create
         public async Task CreateShowAsync(Shows show)
         {
             if (show == null) throw new ArgumentNullException(nameof(show));
@@ -144,9 +142,9 @@ namespace BroadwayShows.Library.Services
                                  .Distinct()
                                  .ToListAsync();
         }
-        public async Task<List<string>> SearchGenresAsync(string search)
+/*        public async Task<List<string>> SearchGenresAsync(string search)
         {
-            if (string.IsNullOrEmpty(search))
+*//*            if (string.IsNullOrEmpty(search))
             {
                 return new List<string>();
             }
@@ -155,8 +153,8 @@ namespace BroadwayShows.Library.Services
                 .Where(s => s.Genre.Contains(search))
                 .Select(s => s.Genre)
                 .Distinct()
-                .ToListAsync();
-        }
+                .ToListAsync();*//*
+        }*/
 
 
     }

@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
-// Add the DbContext
 builder.Services.AddDbContext<BroadwayShowsContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 21)),
@@ -20,6 +19,10 @@ builder.Services.AddTransient<ShowsService>();
 builder.Services.AddTransient<TheaterService>();
 builder.Services.AddTransient<CastCrewService>();
 builder.Services.AddTransient<TicketSalesService>();
+builder.Services.AddTransient<GenreService>();
+builder.Services.AddTransient<WorkingPositionService>();
+
+
 
 
 var app = builder.Build();

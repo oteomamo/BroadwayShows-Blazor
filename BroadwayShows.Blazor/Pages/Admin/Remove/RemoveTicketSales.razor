@@ -1,5 +1,5 @@
 ﻿@page "/UpdateTicketSales"
-@page "/UpdateTicket"
+@* @page "/UpdateTicket"
 @using BroadwayShows.Library.Models
 @using BroadwayShows.Library.Services
 @inject TicketSalesService TicketSalesService
@@ -72,8 +72,9 @@
 
 @code {
     private int selectedTicketNumber;
-    private TicketSales ticketSale = new TicketSales() { Date = DateTime.Now.Date };
-    private List<Theater> theaters;
+    private TicketSales ticketSale = new TicketSales();
+    private List
+    <Theater> theaters;
     private TimeOnly timeOnly
     {
         get => TimeOnly.FromTimeSpan(ticketSale.Time);
@@ -107,4 +108,4 @@
             ticketSale = null; 
         }
     }
-}
+} *@

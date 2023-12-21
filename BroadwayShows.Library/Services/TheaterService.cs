@@ -71,6 +71,16 @@ namespace BroadwayShows.Library.Services
             return theater.TheaterId;
         }
 
+        public async Task<List<Theater>> GetTheatersByIdsAsync(List<int> theaterIds)
+        {
+            if (theaterIds == null || !theaterIds.Any())
+            {
+                return new List<Theater>();
+            }
 
+            return await _context.Theaters
+                .Where(theater => theaterIds.Contains(theater.TheaterId))
+                .ToListAsync();
+        }
     }
 }

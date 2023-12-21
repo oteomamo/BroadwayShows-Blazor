@@ -102,7 +102,7 @@ namespace BroadwayShows.Library.Services
 
         public async Task<List<string>> GetTheatersForShowAsync(int showId)
         {
-            if (showId == -1) 
+            if (showId == -1)
             {
                 return await _context.Theaters
                                      .Select(theater => theater.Name)
@@ -142,20 +142,32 @@ namespace BroadwayShows.Library.Services
                                  .Distinct()
                                  .ToListAsync();
         }
-/*        public async Task<List<string>> SearchGenresAsync(string search)
+        /*        public async Task<List<string>> SearchGenresAsync(string search)
+                {
+        *//*            if (string.IsNullOrEmpty(search))
+                    {
+                        return new List<string>();
+                    }
+
+                    return await _context.Shows
+                        .Where(s => s.Genre.Contains(search))
+                        .Select(s => s.Genre)
+                        .Distinct()
+                        .ToListAsync();*//*
+                }*/
+
+        public async Task<List<Shows>> GetShowsByGenresAsync(List<int> genreIds)
         {
-*//*            if (string.IsNullOrEmpty(search))
+            if (genreIds == null || !genreIds.Any())
             {
-                return new List<string>();
+                // Return all shows if no specific genre is selected
+                return await GetAllShowsAsync();
             }
 
             return await _context.Shows
-                .Where(s => s.Genre.Contains(search))
-                .Select(s => s.Genre)
-                .Distinct()
-                .ToListAsync();*//*
-        }*/
-
+                                 .Where(show => genreIds.Contains(show.GenreId))
+                                 .ToListAsync();
+        }
 
     }
 }

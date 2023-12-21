@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BroadwayShows.API.props" />
+</Project>

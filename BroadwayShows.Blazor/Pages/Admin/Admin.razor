@@ -1,4 +1,5 @@
-﻿@page "/Admin/admin"
+@page "/Admin/admin"
+@attribute [Authorize]
 @using BroadwayShows.Library.Models;
 @using BroadwayShows.Library.Services;
 @using Syncfusion.Blazor
@@ -418,7 +419,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ShowId">Show</label>
-                        <InputSelect @bind-Value="newCastCrew.ShowId" class="form-control">
+                        <InputSelect @bind-Value="newCastCrew.ShowId" @onchange="OnShowSelectionChanged" class="form-control">
                             <option value="">-- Select Show --</option>
                             @foreach (var show in showsDropdownData)
                             {
@@ -519,6 +520,16 @@
                         <InputNumber id="Price" class="form-control" @bind-Value="newTicketSale.Price" />
                     </div>
                     <div class="form-group">
+                        <label for="ShowId">Show</label>
+                        <InputSelect @bind-Value="newTicketSale.ShowId" class="form-control">
+                            <option value="">-- Select Show --</option>
+                            @foreach (var show in showsDropdownData)
+                            {
+                                <option value="@show.ShowId">@show.Name</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="form-group">
                         <label for="TheaterId">Theater</label>
                         <InputSelect @bind-Value="newTicketSale.TheaterId" class="form-control">
                             <option value="">-- Select Theater --</option>
@@ -549,7 +560,7 @@
 
 
 
-    private Shows newShow = new Shows { ReleaseDate = DateOnly.FromDateTime(DateTime.Now) };
+    private Shows newShow = new Shows { ReleaseDate = DateTime.Now };
     private bool ShowModal { get; set; } = false;
     private List<Shows> showsList;
     private List<Theater> theatersList = new List<Theater>();
@@ -581,15 +592,16 @@
     }
     private DateTime releaseDateBindable
     {
-        get => newShow.ReleaseDate.ToDateTime(TimeOnly.MinValue);
-        set => newShow.ReleaseDate = DateOnly.FromDateTime(value);
+        get => newShow.ReleaseDate;
+        set => newShow.ReleaseDate = value;
     }
+
 
 
     private async Task NavigateToAddShows()
     {
         genresList = await GenreService.GetAllGenresAsync();
-        newShow = new Shows { ReleaseDate = DateOnly.FromDateTime(DateTime.Now) };
+        newShow = new Shows { ReleaseDate = DateTime.Now };
         ShowModal = true;
         StateHasChanged();
     }
@@ -728,6 +740,25 @@
         StateHasChanged();
     }
 
+    private async Task LoadTheatersForShow(int showId)
+    {
+        var theaterIds = await CastCrewService.GetTheatersForShow(showId);
+        theatersDropdownData = await TheaterService.GetTheatersByIdsAsync(theaterIds);
+        StateHasChanged();
+    }
+
+
+
+    private async Task OnShowSelectionChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int showId))
+        {
+            await LoadTheatersForShow(showId);
+        }
+    }
+
+
+
 
     <!-- Working Position Modal -->
     private List<WorkingPosition> workingPositionsList = new List<WorkingPosition>();
@@ -768,18 +799,19 @@
     <!-- TicketSales Modal -->
     private bool isTicketSalesChecked = true;
     private List<TicketSales> ticketSalesList;
-    private TicketSales newTicketSale = new TicketSales { Date = DateOnly.FromDateTime(DateTime.Now), Time = TimeSpan.Zero };
+    private TicketSales newTicketSale = new TicketSales { Date = (DateTime.Now), Time = TimeSpan.Zero };
     private bool ShowTicketSalesModal { get; set; } = false;
 
     private DateTime dateBindable
     {
-        get => newTicketSale.Date.ToDateTime(TimeOnly.MinValue);
-        set => newTicketSale.Date = DateOnly.FromDateTime(value);
+        get => newTicketSale.Date;
+        set => newTicketSale.Date = value;
     }
+
 
     private void NavigateToAddTicketSales()
     {
-        newTicketSale = new TicketSales { Date = DateOnly.FromDateTime(DateTime.Now), Time = TimeSpan.Zero };
+        newTicketSale = new TicketSales { Date = DateTime.Now, Time = TimeSpan.Zero };
         ShowTicketSalesModal = true;
         StateHasChanged();
     }

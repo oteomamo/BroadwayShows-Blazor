@@ -1,4 +1,4 @@
-﻿@page "/AddAttributes"
+@page "/AddAttributes"
 @using BroadwayShows.Library.Models;
 @using BroadwayShows.Library.Services;
 @using Syncfusion.Blazor
@@ -543,7 +543,7 @@
 
 
 
-    private Shows newShow = new Shows { ReleaseDate = DateOnly.FromDateTime(DateTime.Now) }; 
+    private Shows newShow = new Shows { ReleaseDate = DateTime.Now }; 
     private bool ShowModal { get; set; } = false;
     private List<Shows> showsList;
     private List<Theater> theatersList = new List<Theater>();
@@ -567,15 +567,15 @@
     }
     private DateTime releaseDateBindable
     {
-        get => newShow.ReleaseDate.ToDateTime(TimeOnly.MinValue);
-        set => newShow.ReleaseDate = DateOnly.FromDateTime(value);
+        get => newShow.ReleaseDate;
+        set => newShow.ReleaseDate = value;
     }
 
 
     private async Task NavigateToAddShows()
     {
         genresList = await GenreService.GetAllGenresAsync(); 
-        newShow = new Shows { ReleaseDate = DateOnly.FromDateTime(DateTime.Now) };
+        newShow = new Shows { ReleaseDate = DateTime.Now };
         ShowModal = true; 
         StateHasChanged(); 
     }
@@ -754,18 +754,18 @@
     <!-- TicketSales Modal -->
     private bool isTicketSalesChecked = true;
     private List<TicketSales> ticketSalesList;
-    private TicketSales newTicketSale = new TicketSales { Date = DateOnly.FromDateTime(DateTime.Now), Time = TimeSpan.Zero };
+    private TicketSales newTicketSale = new TicketSales { Date = DateTime.Now, Time = TimeSpan.Zero };
     private bool ShowTicketSalesModal { get; set; } = false;
 
     private DateTime dateBindable
     {
-        get => newTicketSale.Date.ToDateTime(TimeOnly.MinValue);
-        set => newTicketSale.Date = DateOnly.FromDateTime(value);
+        get => newTicketSale.Date;
+        set => newTicketSale.Date = value;
     }
 
     private void NavigateToAddTicketSales()
     {
-        newTicketSale = new TicketSales { Date = DateOnly.FromDateTime(DateTime.Now), Time = TimeSpan.Zero };
+        newTicketSale = new TicketSales { Date = DateTime.Now, Time = TimeSpan.Zero };
         ShowTicketSalesModal = true;
         StateHasChanged();
     }

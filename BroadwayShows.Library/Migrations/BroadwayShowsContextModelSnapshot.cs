@@ -3,6 +3,7 @@ using System;
 using BroadwayShows.Library.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -17,7 +18,9 @@ namespace BroadwayShows.Library.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.13")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("BroadwayShows.Library.Models.CastCrew", b =>
                 {
@@ -25,13 +28,15 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SSN"));
+
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("varchar(1)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ShowId")
                         .HasColumnType("int");
@@ -59,9 +64,11 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreId"));
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GenreId");
 
@@ -74,18 +81,20 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShowId"));
+
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("ReleaseDate")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ShowId");
 
@@ -100,13 +109,15 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TheaterId"));
+
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberOfSeats")
                         .HasColumnType("int");
@@ -122,22 +133,29 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketNumber"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("NumberOfTickets")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)");
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ShowId")
+                        .HasColumnType("int");
 
                     b.Property<int>("TheaterId")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan>("Time")
-                        .HasColumnType("time(6)");
+                        .HasColumnType("time");
 
                     b.HasKey("TicketNumber");
+
+                    b.HasIndex("ShowId");
 
                     b.HasIndex("TheaterId");
 
@@ -150,9 +168,11 @@ namespace BroadwayShows.Library.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WorkingPositionID"));
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("WorkingPositionID");
 
@@ -199,11 +219,19 @@ namespace BroadwayShows.Library.Migrations
 
             modelBuilder.Entity("BroadwayShows.Library.Models.TicketSales", b =>
                 {
+                    b.HasOne("BroadwayShows.Library.Models.Shows", "Show")
+                        .WithMany("TicketSales")
+                        .HasForeignKey("ShowId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("BroadwayShows.Library.Models.Theater", "Theater")
                         .WithMany("TicketSales")
                         .HasForeignKey("TheaterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Show");
 
                     b.Navigation("Theater");
                 });
@@ -216,6 +244,8 @@ namespace BroadwayShows.Library.Migrations
             modelBuilder.Entity("BroadwayShows.Library.Models.Shows", b =>
                 {
                     b.Navigation("CastCrews");
+
+                    b.Navigation("TicketSales");
                 });
 
             modelBuilder.Entity("BroadwayShows.Library.Models.Theater", b =>

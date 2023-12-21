@@ -1,4 +1,4 @@
-﻿using BroadwayShows.Library.Models;
+using BroadwayShows.Library.Models;
 using BroadwayShows.Library.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -22,7 +22,7 @@ namespace BroadwayShows.Library.Data
             public BroadwayShowsContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<BroadwayShowsContext>();
-                optionsBuilder.UseMySql("Server=127.0.0.1;Database=BroadwayShows;User ID=root;Password=@Database;Port=3306;CharSet=utf8mb4;", new MySqlServerVersion(new Version(8, 0, 21)));
+                optionsBuilder.UseSqlServer("Server=tcp:broadwayshows.database.windows.net,1433;Initial Catalog=BroadwayShows;Persist Security Info=False;User ID=legion;Password=@Database;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
                 return new BroadwayShowsContext(optionsBuilder.Options);
             }

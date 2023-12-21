@@ -1,4 +1,4 @@
-﻿@page "/searchresults"
+@page "/searchresults"
 @using Microsoft.AspNetCore.WebUtilities;
 @using BroadwayShows.Library.Models;
 @using BroadwayShows.Library.Services;
@@ -30,8 +30,8 @@
     <div style="display: flex; align-items: center; gap: 0.5rem;">
         <p>@ticketCountDisplay</p>
         <button @onclick="DecreaseTicketCount">-</button>
-@*         <input type="text" value="@ticketCount" readonly />
- *@        <button @onclick="IncreaseTicketCount">+</button>
+        @*         <input type="text" value="@ticketCount" readonly />
+        *@        <button @onclick="IncreaseTicketCount">+</button>
     </div>
 
     <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -68,7 +68,8 @@
                     {
                         <li>
                             <div class="form-check dropdown-item">
-                                <InputCheckbox class="form-check-input" id="@($"genre-{genreViewModel.GenreId}")" @bind-Value="genreViewModel.IsChecked" />
+                                <InputCheckbox class="form-check-input" id="@($"genre-{genreViewModel.GenreId}")"
+                                               @bind-Value="genreViewModel.IsChecked" @onclick="() => OnGenreSelectionChanged(genreViewModel)" />
                                 <label class="form-check-label" for="@($"genre-{genreViewModel.GenreId}")">@genreViewModel.Name</label>
                             </div>
                         </li>
@@ -82,19 +83,23 @@
     }
 
 
-    <div class="price-slider col-md-3">
-        <label for="priceRange" class="price-slider-label mb-3">Tickets under @selectedMaxPrice.ToString("C")/ea</label>
-        <input type="range" id="priceRange" min="@minPrice" max="@maxPrice" @bind="selectedMaxPrice" class="form-control price-slider-range mb-3" />
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary" @onclick="ResetPrice">Reset</button>
-        </div>
+    @*     <div class="price-slider col-md-3">
+    <label for="priceRange" class="price-slider-label mb-3">Tickets under @selectedMaxPrice.ToString("C")/ea</label>
+    <input type="range" id="priceRange" min="@minPrice" max="@maxPrice"
+    value="@selectedMaxPrice" @oninput="UpdatePriceAndFilter"
+    class="form-control price-slider-range mb-3" />
+
+
+    <div class="d-grid gap-2">
+    <button class="btn btn-primary" @onclick="ResetPrice">Reset</button>
     </div>
+    </div>*@
 </div>
 
 
 
 
-@* 
+@*
 @if (showsDropdownData == null || !showPrices.Any() || !showTimes.Any())
 {
     <p>Loading show data...</p>
@@ -161,8 +166,8 @@ else
     private List<Shows> showsDropdownData = new List<Shows>();
     private string selectedShowName;
     //private int? selectedShowId;
-    private DateOnly? startDate;
-    private DateOnly? endDate;
+    private DateTime? startDate;
+    private DateTime? endDate;
     private int ticketCount;
     private string ticketCountDisplay => ticketCount > 0 ? $"{ticketCount} Tickets" : "Select number of tickets";
 
@@ -236,9 +241,27 @@ else
 
         var ticketSales = await TicketSalesService.GetAllTicketSaleAsync();
 
-        minPrice = ticketSales.Min(ts => ts.Price);
-        maxPrice = ticketSales.Max(ts => ts.Price);
+        if (ticketSales.Any())
+        {
+            minPrice = ticketSales.Min(ts => ts.Price);
 
+        }
+        else
+        {
+            // Handle the case when there are no ticket sales
+            // Set maxPrice to a default value or handle it as needed
+            minPrice = 0; // or some other default value
+        }
+        if (ticketSales.Any())
+        {
+            maxPrice = ticketSales.Max(ts => ts.Price);
+        }
+        else
+        {
+            // Handle the case when there are no ticket sales
+            // Set maxPrice to a default value or handle it as needed
+            maxPrice = 0; // or some other default value
+        }
         selectedMaxPrice = maxPrice;
 
         if (queryParams.TryGetValue("showId", out var showIdValue) && showIdValue != "")
@@ -256,12 +279,12 @@ else
             selectedShowName = "All Shows";
         }
 
-        if (queryParams.TryGetValue("startDate", out var start) && DateOnly.TryParse(start, out var startDateValue))
+        if (queryParams.TryGetValue("startDate", out var start) && DateTime.TryParse(start, out var startDateValue))
         {
             startDate = startDateValue;
         }
 
-        if (queryParams.TryGetValue("endDate", out var end) && DateOnly.TryParse(end, out var endDateValue))
+        if (queryParams.TryGetValue("endDate", out var end) && DateTime.TryParse(end, out var endDateValue))
         {
             endDate = endDateValue;
         }
@@ -270,7 +293,7 @@ else
         {
             ticketCount = ticketCountValue;
         }
-
+        await FilterShowsBasedOnSelectedGenres();
         await LoadShowDataAsync();
 
     }
@@ -318,7 +341,7 @@ else
             selectedShowId = showId;
             // var selectedShow = showsDropdownData.FirstOrDefault(s => s.ShowId == showId);
             // selectedShowName = selectedShow?.Name;
-            // ResetGenreSelection(); 
+            // ResetGenreSelection();
             selectedShowName = showsDropdownData.FirstOrDefault(s => s.ShowId == showId)?.Name;
 
             await LoadShowDataAsync();
@@ -341,7 +364,7 @@ else
 
     private void OnStartDateChanged(ChangeEventArgs e)
     {
-        if (DateOnly.TryParse(e.Value?.ToString(), out var date))
+        if (DateTime.TryParse(e.Value?.ToString(), out var date))
         {
             startDate = date;
         }
@@ -349,7 +372,7 @@ else
 
     private void OnEndDateChanged(ChangeEventArgs e)
     {
-        if (DateOnly.TryParse(e.Value?.ToString(), out var date))
+        if (DateTime.TryParse(e.Value?.ToString(), out var date))
         {
             endDate = date;
         }
@@ -362,7 +385,7 @@ else
 
     private void DecreaseTicketCount()
     {
-        if (ticketCount > 0) 
+        if (ticketCount > 0)
         {
             ticketCount--;
         }
@@ -379,8 +402,28 @@ else
         {
             genreViewModel.IsChecked = true;
         }
+        FilterShowsBasedOnSelectedGenres();
     }
 
+    private async Task FilterShowsBasedOnSelectedGenres()
+    {
+        var selectedGenreIds = genreViewModels.Where(g => g.IsChecked).Select(g => g.GenreId).ToList();
+        showsDropdownData = await ShowsService.GetShowsByGenresAsync(selectedGenreIds);
+        StateHasChanged(); // Refresh the UI with the filtered data
+    }
+
+    private void OnGenreSelectionChanged(GenreViewModel genreViewModel)
+    {
+        genreViewModel.IsChecked = !genreViewModel.IsChecked;
+        FilterShowsBasedOnSelectedGenres();
+    }
+
+    private async Task OnGenreSelectionChanged()
+    {
+        var selectedGenreIds = genreViewModels.Where(g => g.IsChecked).Select(g => g.GenreId).ToList();
+        showsDropdownData = await ShowsService.GetShowsByGenresAsync(selectedGenreIds);
+        StateHasChanged();
+    }
 
     private string GetImagePath(string imageName)
     {
@@ -400,14 +443,13 @@ else
         var allAvailableTimes = new List<TimeSpan>();
         foreach (var theaterId in theaterIds)
         {
-            var from = startDate ?? DateOnly.MinValue;
-            var till = endDate ?? DateOnly.MaxValue;
+            var from = startDate ?? DateTime.MinValue;
+            var till = endDate ?? DateTime.MaxValue;
             var times = await TicketSalesService.GetAvailableTimesForTheaterInDateRange(theaterId, from, till);
             allAvailableTimes.AddRange(times);
         }
         return allAvailableTimes.Distinct().ToList();
     }
-
 
 
 

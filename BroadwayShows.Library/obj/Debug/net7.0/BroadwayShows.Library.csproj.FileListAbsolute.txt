@@ -1,0 +1,57 @@
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.deps.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.runtimeconfig.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.pdb
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.AssemblyReference.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfoInputs.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfo.cs
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.CoreCompileInputs.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\refint\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.pdb
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.genruntimeconfig.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Debug\net7.0\ref\BroadwayShows.Library.dll
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.deps.json
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.runtimeconfig.json
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.dll
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.pdb
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.AssemblyReference.cache
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfoInputs.cache
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfo.cs
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.CoreCompileInputs.cache
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.dll
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\refint\BroadwayShows.Library.dll
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.pdb
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.genruntimeconfig.cache
+C:\Users\brand\OneDrive\Documents\GitHub\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\ref\BroadwayShows.Library.dll
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.deps.json
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.runtimeconfig.json
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.dll
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.pdb
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.AssemblyReference.cache
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.GeneratedMSBuildEditorConfig.editorconfig
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfoInputs.cache
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfo.cs
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.CoreCompileInputs.cache
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.dll
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\refint\BroadwayShows.Library.dll
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.pdb
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.genruntimeconfig.cache
+E:\Documents\FALL 2023 Semester\CEN 4090L\backup-auth0\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\ref\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.deps.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.runtimeconfig.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\bin\Debug\net7.0\BroadwayShows.Library.pdb
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.AssemblyReference.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfoInputs.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.AssemblyInfo.cs
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.csproj.CoreCompileInputs.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.sourcelink.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\refint\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.pdb
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\BroadwayShows.Library.genruntimeconfig.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Library\obj\Debug\net7.0\ref\BroadwayShows.Library.dll

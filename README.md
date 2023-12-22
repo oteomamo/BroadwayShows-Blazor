@@ -4,7 +4,7 @@ CEN4090L Software Engineering Capstone Group 9 Project
 
 ## Description
 
-BroadwayShows is a web application database developed 
+BroadwayShows is a Blazor web application database developed 
 using the C# programming language and Blazor framework. This applicatiion is designed to facilitate seamless 
 operations and interactions between various entities such as Shows,Theaters, CastCrews and Tickets 
 unified under a user-friendly interface. This web application showcases the neccesary CRUD application for 

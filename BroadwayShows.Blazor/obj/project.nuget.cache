@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2nvaAPZv31slOsH808vwsclwKApesOo0WPryCcry33I4nTktvCXV4JjYm4qmLCCMkCKKeJrHYoXuKylXyoN2TQ==",
+  "dgSpecHash": "w4JCYiRdfTFuKbzJBaPLH9CnSwU0g2S0jVw0uyKGs4MuzxUQj5VM/qTr6ty7tNKmV3fhsNQNPxQdzVL48OSdRg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\BroadwayShows.Blazor.csproj",
+  "projectFilePath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\BroadwayShows.Blazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oteom\\.nuget\\packages\\auth0.aspnetcore.authentication\\1.4.0\\auth0.aspnetcore.authentication.1.4.0.nupkg.sha512",
     "C:\\Users\\oteom\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

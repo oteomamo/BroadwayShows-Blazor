@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tqz2TVGqeuDbqf7CF7NqXZE4bRF1qb6bcfaoShsiRDg=",
+  "Hash": "8c6NnJUpJoW5PxunmPdQP7PQCUnmVCb6yvagZ6kWHmM=",
   "Source": "BroadwayShows.Blazor",
   "BasePath": "_content/BroadwayShows.Blazor",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "BroadwayShows.Blazor\\wwwroot",
       "Source": "BroadwayShows.Blazor",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "Pattern": "**"
     }
@@ -1062,10 +1062,10 @@
       "OriginalItemSpec": "C:\\Users\\oteom\\.nuget\\packages\\syncfusion.blazor.themes\\23.1.44\\staticwebassets\\tailwind-dark.css"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BroadwayShows.Blazor.styles.css",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BroadwayShows.Blazor.styles.css",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "BroadwayShows.Blazor.styles.css",
       "AssetKind": "All",
@@ -1078,13 +1078,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BroadwayShows.Blazor.styles.css"
+      "OriginalItemSpec": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BroadwayShows.Blazor.styles.css"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BroadwayShows.Blazor.bundle.scp.css",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BroadwayShows.Blazor.bundle.scp.css",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "BroadwayShows.Blazor.bundle.scp.css",
       "AssetKind": "All",
@@ -1097,13 +1097,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BroadwayShows.Blazor.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BroadwayShows.Blazor.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -1119,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1138,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\__Juliet.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\__Juliet.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/__Juliet.jpg",
       "AssetKind": "All",
@@ -1157,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\__Juliet.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\5iRrB6qBT.png",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\5iRrB6qBT.png",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/5iRrB6qBT.png",
       "AssetKind": "All",
@@ -1176,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\5iRrB6qBT.png"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\A_Beautiful_Noise_The_Neil_DIamond_Musical.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\A_Beautiful_Noise_The_Neil_DIamond_Musical.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/A_Beautiful_Noise_The_Neil_DIamond_Musical.jpg",
       "AssetKind": "All",
@@ -1195,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\A_Beautiful_Noise_The_Neil_DIamond_Musical.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Aladdin.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Aladdin.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Aladdin.jpg",
       "AssetKind": "All",
@@ -1214,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Aladdin.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Avenue_Q.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Avenue_Q.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Avenue_Q.jpg",
       "AssetKind": "All",
@@ -1233,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Avenue_Q.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Bad_Cinderella.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Bad_Cinderella.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Bad_Cinderella.jpg",
       "AssetKind": "All",
@@ -1252,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Bad_Cinderella.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Beauty_and_the_Beast.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Beauty_and_the_Beast.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Beauty_and_the_Beast.jpg",
       "AssetKind": "All",
@@ -1271,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Beauty_and_the_Beast.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Billy_Elliot.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Billy_Elliot.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Billy_Elliot.jpg",
       "AssetKind": "All",
@@ -1290,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Billy_Elliot.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Bob_Fosses_DANCIN.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Bob_Fosses_DANCIN.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Bob_Fosses_DANCIN.jpg",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Bob_Fosses_DANCIN.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Cats.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Cats.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Cats.jpg",
       "AssetKind": "All",
@@ -1328,10 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Cats.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Chicago.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Chicago.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Chicago.jpg",
       "AssetKind": "All",
@@ -1347,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Chicago.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Dear_Evan_Hansen.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Dear_Evan_Hansen.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Dear_Evan_Hansen.jpg",
       "AssetKind": "All",
@@ -1366,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Dear_Evan_Hansen.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Funny_Girl.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Funny_Girl.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Funny_Girl.jpg",
       "AssetKind": "All",
@@ -1385,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Funny_Girl.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Hadestown.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Hadestown.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Hadestown.jpg",
       "AssetKind": "All",
@@ -1404,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Hadestown.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Hairspray.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Hairspray.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Hairspray.jpg",
       "AssetKind": "All",
@@ -1423,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Hairspray.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Hamilton.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Hamilton.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Hamilton.jpg",
       "AssetKind": "All",
@@ -1442,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Hamilton.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Harry_Potter_and_the_Cursed_Child.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Harry_Potter_and_the_Cursed_Child.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Harry_Potter_and_the_Cursed_Child.jpg",
       "AssetKind": "All",
@@ -1461,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Harry_Potter_and_the_Cursed_Child.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Jersey_Boys.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Jersey_Boys.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Jersey_Boys.jpg",
       "AssetKind": "All",
@@ -1480,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Jersey_Boys.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Kimberly_Akimbo.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Kimberly_Akimbo.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Kimberly_Akimbo.jpg",
       "AssetKind": "All",
@@ -1499,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Kimberly_Akimbo.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Leopoldstadt.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Leopoldstadt.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Leopoldstadt.jpg",
       "AssetKind": "All",
@@ -1518,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Leopoldstadt.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Lerner_and_Loewes_Camelot.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Lerner_and_Loewes_Camelot.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Lerner_and_Loewes_Camelot.jpg",
       "AssetKind": "All",
@@ -1537,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Lerner_and_Loewes_Camelot.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Les_Misérables.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Les_Misérables.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Les_Misérables.jpg",
       "AssetKind": "All",
@@ -1556,10 +1556,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Les_Misérables.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Life_Of_Pi.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Life_Of_Pi.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Life_Of_Pi.jpg",
       "AssetKind": "All",
@@ -1575,10 +1575,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Life_Of_Pi.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Mamma_Mia!.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Mamma_Mia!.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Mamma_Mia!.jpg",
       "AssetKind": "All",
@@ -1594,10 +1594,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Mamma_Mia!.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Matilda_the_Musical.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Matilda_the_Musical.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Matilda_the_Musical.jpg",
       "AssetKind": "All",
@@ -1613,10 +1613,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Matilda_the_Musical.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Miss_Saigon.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Miss_Saigon.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Miss_Saigon.jpg",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Miss_Saigon.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\MJ.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\MJ.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/MJ.jpg",
       "AssetKind": "All",
@@ -1651,10 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\MJ.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Moulin_Rouge!_The_Musical.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Moulin_Rouge!_The_Musical.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Moulin_Rouge!_The_Musical.jpg",
       "AssetKind": "All",
@@ -1670,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Moulin_Rouge!_The_Musical.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\New_York_New_York.png",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\New_York_New_York.png",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/New_York_New_York.png",
       "AssetKind": "All",
@@ -1689,10 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\New_York_New_York.png"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Parade.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Parade.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Parade.jpg",
       "AssetKind": "All",
@@ -1708,10 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Parade.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Phantom_of_the_Opera.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Phantom_of_the_Opera.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Phantom_of_the_Opera.jpg",
       "AssetKind": "All",
@@ -1727,10 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Phantom_of_the_Opera.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Rent.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Rent.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Rent.jpg",
       "AssetKind": "All",
@@ -1746,10 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Rent.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Shucked.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Shucked.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Shucked.jpg",
       "AssetKind": "All",
@@ -1765,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Shucked.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\SIX_The_Musical.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\SIX_The_Musical.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/SIX_The_Musical.jpg",
       "AssetKind": "All",
@@ -1784,10 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\SIX_The_Musical.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Some_Like_it_Hot.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Some_Like_it_Hot.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Some_Like_it_Hot.jpg",
       "AssetKind": "All",
@@ -1803,10 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Some_Like_it_Hot.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Sweeney_Todd.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Sweeney_Todd.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Sweeney_Todd.jpg",
       "AssetKind": "All",
@@ -1822,10 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Sweeney_Todd.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\The_Book_of_Mormon.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\The_Book_of_Mormon.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/The_Book_of_Mormon.jpg",
       "AssetKind": "All",
@@ -1841,10 +1841,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\The_Book_of_Mormon.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\The_Lion_King.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\The_Lion_King.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/The_Lion_King.jpg",
       "AssetKind": "All",
@@ -1860,10 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\The_Lion_King.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Waitress.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Waitress.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Waitress.jpg",
       "AssetKind": "All",
@@ -1879,10 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Waitress.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\welcome.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\welcome.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/welcome.jpg",
       "AssetKind": "All",
@@ -1898,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\welcome.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Wicked.jpg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\Images\\Wicked.jpg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/Images/Wicked.jpg",
       "AssetKind": "All",
@@ -1917,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Images\\Wicked.jpg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -1936,10 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -1974,10 +1974,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -1993,10 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -2012,10 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -2031,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -2050,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -2069,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -2088,10 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\css\\site.css",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -2107,10 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\favicon.png",
       "SourceId": "BroadwayShows.Blazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Blazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Blazor\\wwwroot\\",
       "BasePath": "_content/BroadwayShows.Blazor",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

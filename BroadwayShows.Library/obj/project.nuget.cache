@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A9J+JwYHB6oo/uV6kS9l/49AQTClN9Yytgo3nrIfvyPG2BCqU4/0yarQnzAI5Rzh7akaQbV0Qxv/Gs1L0cNTRg==",
+  "dgSpecHash": "kAuULL8XfGUtlaRwK2wuXiTiZIG/Jrx/rccga/Vu80d9TZWHOuUrWyJfTB9ya3MFKcrjPyO6lRe5r42ki6nhRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Library\\BroadwayShows.Library.csproj",
+  "projectFilePath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Library\\BroadwayShows.Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oteom\\.nuget\\packages\\auth0.aspnetcore.authentication\\1.4.0\\auth0.aspnetcore.authentication.1.4.0.nupkg.sha512",
     "C:\\Users\\oteom\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

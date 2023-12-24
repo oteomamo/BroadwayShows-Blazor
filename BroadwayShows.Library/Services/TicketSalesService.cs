@@ -184,6 +184,17 @@ namespace BroadwayShows.Library.Services
             return availableTimes;
         }
 
+        public async Task<List<(DateTime Date, TimeSpan Time)>> GetAvailableDateTimeForShow(int showId, DateTime from, DateTime till)
+        {
+            return await _context.TicketSales
+                        .Where(ts => ts.ShowId == showId && ts.Date >= from && ts.Date <= till)
+                        .Select(ts => new { ts.Date, ts.Time })
+                        .Distinct()
+                        .ToListAsync()
+                        .ContinueWith(task => task.Result.Select(ts => (ts.Date, ts.Time)).ToList());
+        }
+
+
 
     }
 }

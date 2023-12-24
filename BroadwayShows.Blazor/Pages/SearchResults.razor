@@ -10,10 +10,11 @@
 @inject TicketSalesService TicketSalesService
 @inject CastCrewService CastCrewService
 
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; padding-bottom: 40px;">
 
 <h3>Broadway Tickets</h3>
 
-<div style="display: flex; align-items: center; gap: 1rem;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;">
     <div>
         <InputSelect id="showSelect" @bind-Value="selectedShowId" class="form-control">
             <option value="">All Shows</option>
@@ -24,14 +25,33 @@
         </InputSelect>
     </div>
 
-
-
+    <!-- Genre selection with reset button inside the dropdown -->
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="genreDropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Genres
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="genreDropdownMenuButton">
+            @foreach (var genreViewModel in genreViewModels)
+            {
+                <li>
+                    <div class="form-check dropdown-item">
+                        <InputCheckbox class="form-check-input" id="@($"genre-{genreViewModel.GenreId}")"
+                                       @bind-Value="genreViewModel.IsChecked" @onclick="() => OnGenreSelectionChanged(genreViewModel)" />
+                        <label class="form-check-label" for="@($"genre-{genreViewModel.GenreId}")">@genreViewModel.Name</label>
+                    </div>
+                </li>
+            }
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <button class="btn btn-primary w-100" @onclick="ResetGenreSelection">Reset</button>
+            </li>
+        </ul>
+    </div>
 
     <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <p>@ticketCountDisplay</p>
-        <button @onclick="DecreaseTicketCount">-</button>
-        @*         <input type="text" value="@ticketCount" readonly />
-        *@        <button @onclick="IncreaseTicketCount">+</button>
+        <p style="margin-right: 10px;">@ticketCountDisplay</p>
+        <button class="btn btn-primary" @onclick="DecreaseTicketCount">-</button>
+        <button class="btn btn-primary" @onclick="IncreaseTicketCount">+</button>
     </div>
 
     <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -43,18 +63,20 @@
         <label for="endDate">Till:</label>
         <InputDate id="endDate" @bind-Value="endDate" class="form-control" />
     </div>
-
+</div>
 </div>
 
+<!-- Rest of the code remains unchanged -->
+@* 
 <div>
     <p>Show Name: @selectedShowName</p>
     <p>Start Date: @startDate?.ToString("yyyy-MM-dd")</p>
     <p>End Date: @endDate?.ToString("yyyy-MM-dd")</p>
     <p>Number of Tickets: @(ticketCount > 0 ? ticketCount.ToString() + " Tickets" : "Select number of tickets")</p>
-</div>
+</div> *@
 
 
-
+@* 
 <div style="padding-top: 40px;" class="row">
     @if (!selectedShowId.HasValue || selectedShowId.Value == 0)
     {
@@ -80,7 +102,7 @@
                 <button class="btn btn-primary" @onclick="ResetGenreSelection">Reset</button>
             </div>
         </div>
-    }
+    } *@
 
 
     @*     <div class="price-slider col-md-3">
@@ -94,7 +116,7 @@
     <button class="btn btn-primary" @onclick="ResetPrice">Reset</button>
     </div>
     </div>*@
-</div>
+@* </div> *@
 
 
 
@@ -182,6 +204,7 @@ else
 
     private Dictionary<int, decimal> showPrices = new Dictionary<int, decimal>();
     private Dictionary<int, List<TimeSpan>> showTimes = new Dictionary<int, List<TimeSpan>>();
+    private Dictionary<int, List<(DateTime Date, TimeSpan Time)>> showDateTimes = new Dictionary<int, List<(DateTime Date, TimeSpan Time)>>();
 
     private string FormatTime(TimeSpan time)
     {
@@ -297,16 +320,20 @@ else
         await LoadShowDataAsync();
 
     }
+
     private async Task LoadShowDataAsync()
     {
         showsDropdownData = await ShowsService.GetAllShowsAsync();
+
         foreach (var show in showsDropdownData)
         {
+            var dateTimes = await TicketSalesService.GetAvailableDateTimeForShow(show.ShowId, startDate.Value, endDate.Value);
+            showDateTimes[show.ShowId] = dateTimes;
+
             var theaterIds = await CastCrewService.GetTheatersForShow(show.ShowId);
             foreach (var theaterId in theaterIds)
             {
                 var times = await TicketSalesService.GetAvailableTimesForTheaterInDateRange(theaterId, startDate.Value, endDate.Value);
-                // Assuming we want to store all times across all theaters for a show
                 if (showTimes.ContainsKey(show.ShowId))
                 {
                     showTimes[show.ShowId].AddRange(times);
@@ -316,15 +343,17 @@ else
                     showTimes[show.ShowId] = new List<TimeSpan>(times);
                 }
             }
-            // If you have multiple theaters for a show and hence multiple prices, decide how to handle that here.
-            // For example, you could choose the lowest, the highest, or the most common price.
+
+            // Fetching price for the first theater for simplicity
             showPrices[show.ShowId] = await TicketSalesService.GetTicketPriceForShow(theaterIds.FirstOrDefault());
         }
-        // If you've added times for a show from multiple theaters, ensure you remove duplicates.
+
+        // Remove duplicates from showTimes
         foreach (var showId in showTimes.Keys.ToList())
         {
             showTimes[showId] = showTimes[showId].Distinct().ToList();
         }
+
         StateHasChanged();
     }
 
@@ -459,31 +488,54 @@ else
 @{
     void RenderShowCard(Shows show)
     {
-        <div class="buy-show-card" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
-            <!-- Container for Image and Name/Price -->
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-                <!-- Image -->
-                <div style="flex-shrink: 0;">
-                    <img src="@GetImagePath(show.Image)" alt="@show.Name" style="width: 150px; height: 150px; object-fit: cover;" />
-                </div>
-                <!-- Name and Price -->
-                <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                    <p><strong>@show.Name</strong></p>
-                    <p>Price: @(showPrices.ContainsKey(show.ShowId) ? showPrices[show.ShowId].ToString("C") : "N/A")</p>
-                </div>
+        <div class="buy-show-card" style="display: flex; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-bottom: 20px;">
+            <!-- Left Side: Image -->
+            <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                <img src="@GetImagePath(show.Image)" alt="@show.Name" style="width: 70%; height: auto; max-width: 150px; object-fit: cover;" />
             </div>
-            <!-- Times at the bottom -->
-            <div style="margin-top: 10px;">
-                @if (showTimes.ContainsKey(show.ShowId))
-                {
-                    <ul style="padding-left: 0; list-style: none;">
-                        @foreach (var time in showTimes[show.ShowId])
+
+            <!-- Right Side: Text -->
+            <div style="flex: 2; padding-left: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <p style="margin: 0; font-size: 1.5em;"><strong>@show.Name</strong></p>
+                    <p style="margin: 0;">Price: @(showPrices.ContainsKey(show.ShowId) ? showPrices[show.ShowId].ToString("C") : "N/A")</p>
+                </div>
+                <div style="margin-top: 10px;">
+                    @if (showDateTimes.ContainsKey(show.ShowId))
+                    {
+                        var groupedDateTimes = showDateTimes[show.ShowId]
+                        .GroupBy(dt => dt.Date)
+                        .OrderBy(group => group.Key);
+
+                        foreach (var group in groupedDateTimes)
                         {
-                            <li>@FormatTime(time)</li>
+                            <div>
+                                <strong>@group.Key.ToString("dddd, yyyy-MM-dd"):</strong>
+                                <div style="margin-top: 5px;">
+                                    @foreach (var dateTime in group.OrderBy(dt => dt.Time))
+                                    {
+                                        <button @onclick="() => NavigateToShowDetails(show.ShowId, dateTime.Time)" class="btn btn-primary" style="margin-right: 5px;">
+                                            @FormatTime(dateTime.Time)
+                                        </button>
+                                    }
+                                </div>
+                            </div>
                         }
-                    </ul>
-                }
+                    }
+                </div>
             </div>
         </div>
     }
+
+
+
+
+
+    void NavigateToShowDetails(int showId, TimeSpan time)
+    {
+        // Replace with your destination URL, and pass parameters as needed
+        var url = $"/ticked/{showId}/{time}";
+        NavigationManager.NavigateTo(url);
+    }
+
 }

@@ -9,107 +9,107 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BroadwayShows.Blazor
 build_property.RootNamespace = BroadwayShows.Blazor
-build_property.ProjectDir = C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Blazor\
+build_property.ProjectDir = C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Blazor\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.Blazor
+build_property.MSBuildProjectDirectory = C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Blazor
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/App.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/About.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/About.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/AddAttributes.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/AddAttributes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRkQXR0cmlidXRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/Admin.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/Admin.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQWRtaW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/RemoveAttributes.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/RemoveAttributes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUmVtb3ZlQXR0cmlidXRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/Remove/RemoveTicketSales.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/Remove/RemoveTicketSales.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUmVtb3ZlXFJlbW92ZVRpY2tldFNhbGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/SearchAttributes.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/SearchAttributes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2VhcmNoQXR0cmlidXRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/Search/SearchCastCrew.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/Search/SearchCastCrew.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2VhcmNoXFNlYXJjaENhc3RDcmV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/UpdateAttributes.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/UpdateAttributes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVXBkYXRlQXR0cmlidXRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Admin/Update/UpdateTicketSales.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Admin/Update/UpdateTicketSales.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVXBkYXRlXFVwZGF0ZVRpY2tldFNhbGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Index.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/ProcessPayment.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/ProcessPayment.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvY2Vzc1BheW1lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Search.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Search.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/SearchResults.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/SearchResults.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoUmVzdWx0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/SearchShows.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/SearchShows.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoU2hvd3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Ticket.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Ticket.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGlja2V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Shared/AccessControl.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Shared/AccessControl.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFjY2Vzc0NvbnRyb2wucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/_Imports.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Shared/MainLayout.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-f9yj3y191d
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Shared/NavMenu.razor]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-rzv2o7f2ym
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Error.cshtml]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Login.cshtml]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/Logout.cshtml]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-CEN4090L/BroadwayShows.Blazor/Pages/_Host.cshtml]
+[C:/Users/oteom/OneDrive/Desktop/BroadwayShows-Blazor/BroadwayShows.Blazor/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

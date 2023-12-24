@@ -3252,11 +3252,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Library\\BroadwayShows.Library.csproj",
+      "projectUniqueName": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Library\\BroadwayShows.Library.csproj",
       "projectName": "BroadwayShows.Library",
-      "projectPath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Library\\BroadwayShows.Library.csproj",
+      "projectPath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Library\\BroadwayShows.Library.csproj",
       "packagesPath": "C:\\Users\\oteom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-CEN4090L\\BroadwayShows.Library\\obj\\",
+      "outputPath": "C:\\Users\\oteom\\OneDrive\\Desktop\\BroadwayShows-Blazor\\BroadwayShows.Library\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

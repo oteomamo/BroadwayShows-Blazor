@@ -893,3 +893,4 @@ C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.API\obj\Deb
 C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.API\obj\Debug\net7.0\BroadwayShows.API.pdb
 C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.API\obj\Debug\net7.0\BroadwayShows.API.genruntimeconfig.cache
 C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\BroadwayShows.API\obj\Debug\net7.0\ref\BroadwayShows.API.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.API\obj\Debug\net7.0\BroadwayShows.API.sourcelink.json

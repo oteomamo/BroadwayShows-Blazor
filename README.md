@@ -6,7 +6,7 @@ Broadway Shows, a C# and Blazor-server based web application, employs MVC archit
 
 BroadwayShows, a Blazor-based web application, is intricately developed using the C# language and the Blazor framework. It is architecturally designed to streamline interactions among various entities such as Shows, Theaters, Cast Crews, and Tickets, all integrated within a user-centric interface. This application not only demonstrates essential CRUD functionality for its underlying schema but also provides a filtration feature, enabling users to browse shows from December 15th, 2023, to year-end. Additionally, it facilitates ticket purchases for desired performances. The backend is reinforced with an Azure SQL database for robust data management, complemented by Auth0 authentication to secure access to administrative functionalities. 
 
-![image](https://github.com/oteomamo/BroadwayShows-Blazor/BroadwayShows.Blazor/wwwroot/css/2023-12-25-204201.png)
+![image](https://github.com/oteomamo/BroadwayShows-Blazor/blob/master/BroadwayShows.Blazor/wwwroot/css/2023-12-25-204201.png)
 
 
 ## Streamlined Onboarding

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BroadwayShows.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf507513a0a5e165aaf6d5ba9ee13ff48c0ff675")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84c664bf3afebe5d2c55fec127e2e1c8fb26110a")]
 [assembly: System.Reflection.AssemblyProductAttribute("BroadwayShows.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BroadwayShows.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

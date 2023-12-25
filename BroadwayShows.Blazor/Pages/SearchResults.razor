@@ -514,10 +514,11 @@ else
                                 <div style="margin-top: 5px;">
                                     @foreach (var dateTime in group.OrderBy(dt => dt.Time))
                                     {
-                                        <button @onclick="() => NavigateToShowDetails(show.ShowId, dateTime.Time)" class="btn btn-primary" style="margin-right: 5px;">
+                                        <button @onclick="() => NavigateToShowDetails(show.ShowId, group.Key, dateTime.Time)" class="btn btn-primary" style="margin-right: 5px;">
                                             @FormatTime(dateTime.Time)
                                         </button>
                                     }
+
                                 </div>
                             </div>
                         }
@@ -531,11 +532,16 @@ else
 
 
 
-    void NavigateToShowDetails(int showId, TimeSpan time)
+    void NavigateToShowDetails(int showId, DateTime date, TimeSpan time)
     {
-        // Replace with your destination URL, and pass parameters as needed
-        var url = $"/ticked/{showId}/{time}";
+        // Format the date and time into a URL-friendly format
+        // Assuming you want to pass the date and time as query parameters
+        var formattedDate = date.ToString("yyyy-MM-dd");
+        var formattedTime = time.ToString(@"hh\:mm");
+        var url = $"/ticket?showId={showId}&date={formattedDate}&time={formattedTime}";
+
         NavigationManager.NavigateTo(url);
     }
+
 
 }

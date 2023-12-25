@@ -4,6 +4,6 @@
     <ActiveDebugProfile>https</ActiveDebugProfile>
     <RazorPage_SelectedScaffolderID>RazorPageScaffolder</RazorPage_SelectedScaffolderID>
     <RazorPage_SelectedScaffolderCategoryPath>root/Common/RazorPage</RazorPage_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>C:\Users\oteom\OneDrive\Desktop\BroadwayShows-CEN4090L\.github\workflows\azure-webapps-dotnet-core.yml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Blazor\Properties\PublishProfiles\broadwayshows - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

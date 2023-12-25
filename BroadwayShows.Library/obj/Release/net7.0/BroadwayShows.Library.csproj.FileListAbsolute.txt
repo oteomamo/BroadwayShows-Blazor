@@ -1,0 +1,15 @@
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Release\net7.0\BroadwayShows.Library.deps.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Release\net7.0\BroadwayShows.Library.runtimeconfig.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Release\net7.0\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\bin\Release\net7.0\BroadwayShows.Library.pdb
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.csproj.AssemblyReference.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.AssemblyInfoInputs.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.AssemblyInfo.cs
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.csproj.CoreCompileInputs.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.sourcelink.json
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\refint\BroadwayShows.Library.dll
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.pdb
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\BroadwayShows.Library.genruntimeconfig.cache
+C:\Users\oteom\OneDrive\Desktop\BroadwayShows-Blazor\BroadwayShows.Library\obj\Release\net7.0\ref\BroadwayShows.Library.dll

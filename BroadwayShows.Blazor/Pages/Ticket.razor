@@ -1,6 +1,57 @@
 ﻿@page "/ticket"
-<h3>Ticket</h3>
+@using Microsoft.AspNetCore.WebUtilities;
+@using BroadwayShows.Library.Models;
+@using BroadwayShows.Library.Services;
+@inject ShowsService ShowsService
+@inject NavigationManager NavigationManager
+@inject GenreService GenreService
+@inject TheaterService TheaterService
+@inject WorkingPositionService WorkingPositionService
+@inject TicketSalesService TicketSalesService
+@inject CastCrewService CastCrewService
+
+<h3>Ticket for @ShowName</h3>
+
+<div>
+    <p>Show Name: @ShowName</p>
+    <p>Date: @Date</p>
+    <p>Time: @Time</p>
+    <p>Theater Name: @TheaterName</p>
+</div>
 
 @code {
+    // Properties to store the ticket details
+    public string ShowName { get; set; }
+    public string Date { get; set; }
+    public string Time { get; set; }
+    public string TheaterName { get; set; }
 
+    // This method runs when the component is being initialized
+    protected override async Task OnInitializedAsync()
+    {
+        // Parse the query string to get the parameters
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        var queryParameters = QueryHelpers.ParseQuery(uri.Query);
+
+        if (queryParameters.TryGetValue("showId", out var showIdValue) && int.TryParse(showIdValue, out var showId))
+        {
+            // Use the show ID to get the show name from the ShowsService
+            var show = await ShowsService.GetShowByIdAsync(showId);
+            ShowName = show?.Name ?? "Unknown Show";
+
+            // Now fetch the theaters for this show
+            var theaterNames = await ShowsService.GetTheatersForShowNameAsync(ShowName);
+            TheaterName = theaterNames.FirstOrDefault() ?? "Unknown Theater";
+        }
+
+        if (queryParameters.TryGetValue("date", out var dateValue))
+        {
+            Date = dateValue;
+        }
+
+        if (queryParameters.TryGetValue("time", out var timeValue))
+        {
+            Time = timeValue;
+        }
+    }
 }

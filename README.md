@@ -19,9 +19,7 @@ The BroadwayShows project, with its focus on effective teamwork and communicatio
 
 ## Secure Data Transfer
 
-Security is a critical aspect of BroadwayShows. The application employs advanced encryption and secure data transfer protocols 
-to safeguard user data and interactions. Using HTTPS for secure communication and incorporating robust authentication mechanisms 
-via Auth0, the project ensures a high level of data integrity and security.
+Security is paramount in the BroadwayShows application. It leverages HTTPS, provided by Azure Web Services at https://broadwayshows.azurewebsites.net/, for secure communication, ensuring encrypted data transfer and user interaction protection. Additionally, the application integrates robust authentication protocols through Auth0, enhancing data integrity and overall security.
 
 ## Run and Test GrindChat
 

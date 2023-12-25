@@ -1,38 +1,25 @@
 # BroadwayShows Blazor WebApplication 
 
-CEN4090L Software Engineering Capstone Group 9 Project
+Broadway Shows, a C# and Blazor-server based web application, employs MVC architecture for CRUD operations. It features a user-friendly interface for ticket purchases, utilizes Azure SQL for database management, and incorporates Auth0 for secure authentication.
 
 ## Description
 
-BroadwayShows is a Blazor web application database developed 
-using the C# programming language and Blazor framework. This applicatiion is designed to facilitate seamless 
-operations and interactions between various entities such as Shows,Theaters, CastCrews and Tickets 
-unified under a user-friendly interface. This web application showcases the neccesary CRUD application for 
-the scema below and also offers an interface where a user could filter throug available shows from December 15th, 2023 
-untill the end of the 2023 year. 
+BroadwayShows, a Blazor-based web application, is intricately developed using the C# language and the Blazor framework. It is architecturally designed to streamline interactions among various entities such as Shows, Theaters, Cast Crews, and Tickets, all integrated within a user-centric interface. This application not only demonstrates essential CRUD functionality for its underlying schema but also provides a filtration feature, enabling users to browse shows from December 15th, 2023, to year-end. Additionally, it facilitates ticket purchases for desired performances. The backend is reinforced with an Azure SQL database for robust data management, complemented by Auth0 authentication to secure access to administrative functionalities. 
 
 ![image](https://github.com/oteomamo/BroadwayShows-CEN4090L/assets/79421585/43dd09e1-dabb-48c6-a72e-0494418bd979)
 
 
 ## Streamlined Onboarding
 
-BroadwayShows facilitates a hassle-free entry point which allows for website brousing with or without authentication.
-A simple sign-in or sign-up process through Auth0 is implemented though. Once logged in, allowed users are welcomed by 
-edit the database and perform CRUD operations under one page. The user-friendly interface guarantees a smooth 
-navigation experience, allowing easy and secure access of data from the database.
+BroadwayShows offers a streamlined entry for users, enabling browsing with optional authentication. A straightforward sign-in or sign-up via Auth0 is available. Once authenticated, authorized users gain access to a single-page interface for database editing and comprehensive CRUD operations. This user-friendly design ensures seamless navigation and secure, efficient data access.
 
 ## Efficient Communication & Team Dynamics
 
-The BroadwayShows project emphasizes efficient communication and collaborative team dynamics. The development process involves 
-clear task distribution, focusing on areas like Blazor Server connections, C# Library and API, user Authentication via Auth0, 
-website design elements, and SQL server management. Regular team meetings and agile methodologies ensure synchronized progress'
-and effective problem-solving.
+The BroadwayShows project, with its focus on effective teamwork and communication, now incorporates an Azure SQL database for enhanced data management. This update enhances areas such as Blazor Server connections, C# Library and API, user authentication via Auth0, and website design elements. The team continues to use agile methodologies and regular meetings for synchronized progress and efficient problem-solving, with the integration of Azure SQL database adding a new dimension to their SQL server management strategies.
 
 ## Secure Data Transfer
 
-Security is a critical aspect of BroadwayShows. The application employs advanced encryption and secure data transfer protocols 
-to safeguard user data and interactions. Using HTTPS for secure communication and incorporating robust authentication mechanisms 
-via Auth0, the project ensures a high level of data integrity and security.
+Security is paramount in the BroadwayShows application. It leverages HTTPS, provided by Azure Web Services at https://broadwayshows.azurewebsites.net/, for secure communication, ensuring encrypted data transfer and user interaction protection. Additionally, the application integrates robust authentication protocols through Auth0, enhancing data integrity and overall security.
 
 ## Run and Test GrindChat
 

@@ -11,17 +11,11 @@ BroadwayShows, a Blazor-based web application, is intricately developed using th
 
 ## Streamlined Onboarding
 
-BroadwayShows facilitates a hassle-free entry point which allows for website brousing with or without authentication.
-A simple sign-in or sign-up process through Auth0 is implemented though. Once logged in, allowed users are welcomed by 
-edit the database and perform CRUD operations under one page. The user-friendly interface guarantees a smooth 
-navigation experience, allowing easy and secure access of data from the database.
+BroadwayShows offers a streamlined entry for users, enabling browsing with optional authentication. A straightforward sign-in or sign-up via Auth0 is available. Once authenticated, authorized users gain access to a single-page interface for database editing and comprehensive CRUD operations. This user-friendly design ensures seamless navigation and secure, efficient data access.
 
 ## Efficient Communication & Team Dynamics
 
-The BroadwayShows project emphasizes efficient communication and collaborative team dynamics. The development process involves 
-clear task distribution, focusing on areas like Blazor Server connections, C# Library and API, user Authentication via Auth0, 
-website design elements, and SQL server management. Regular team meetings and agile methodologies ensure synchronized progress'
-and effective problem-solving.
+The BroadwayShows project, with its focus on effective teamwork and communication, now incorporates an Azure SQL database for enhanced data management. This update enhances areas such as Blazor Server connections, C# Library and API, user authentication via Auth0, and website design elements. The team continues to use agile methodologies and regular meetings for synchronized progress and efficient problem-solving, with the integration of Azure SQL database adding a new dimension to their SQL server management strategies.
 
 ## Secure Data Transfer
 

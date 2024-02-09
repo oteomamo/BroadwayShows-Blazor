@@ -1,4 +1,4 @@
-# BroadwayShows Blazor WebApplication 
+# BroadwayShows Blazor - WebApplication 
 
 Broadway Shows, a C# and Blazor-server based web application, employs MVC architecture for CRUD operations. It features a user-friendly interface for ticket purchases, utilizes Azure SQL for database management, and incorporates Auth0 for secure authentication.
 
